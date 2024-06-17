@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistance</title>
+    <link rel="stylesheet" href="assistPage.css">
+</head>
+<body>
+    <header>
+        <h1>Page d'assistance</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="forum.html">Forum</a>
+            <a href="assistance.html">Assistance</a>
+        </nav>
+    </header>
+    <main>
+        <section id="faq">
+            <h2>Questions Fréquentes</h2>
+            <div class="faq-item">
+                <h3>Comment puis-je créer un compte ?</h3>
+                <p>Pour créer un compte, cliquez sur le bouton "S'inscrire" en haut à droite et suivez les instructions.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Comment puis-je réinitialiser mon mot de passe ?</h3>
+                <p>Pour réinitialiser votre mot de passe, cliquez sur "Mot de passe oublié" sur la page de connexion et suivez les instructions.</p>
+            </div>
+            <!-- Ajoutez d'autres questions fréquentes ici -->
+        </section>
+        <section id="guides">
+            <h2>Guides d'utilisation</h2>
+            <ul>
+                <li><a href="#">Comment poster un message sur le forum</a></li>
+                <li><a href="#">Comment modifier votre profil</a></li>
+                <!-- Ajoutez d'autres guides ici -->
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Contactez-nous</h2>
+            <form id="contact-form">
+                <label for="name">Nom:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Votre Forum. Tous droits réservés.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
