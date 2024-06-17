@@ -1,7 +1,7 @@
 package main
 
 import (
-	"JILT.com/m/pkg/server"
+	"jilt.com/m/pkg/server"
 )
 
 func main() {
