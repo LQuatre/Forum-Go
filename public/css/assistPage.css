@@ -2,10 +2,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #EEEEEE; /* Couleur de fond principale */
 }
 
 header {
-    background-color: #333;
+    background-color: #373A40; /* Couleur de fond de l'en-tête */
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -17,41 +18,72 @@ header nav a {
     text-decoration: none;
 }
 
-main {
-    padding: 20px;
+header nav a:hover {
+    color: #DC5F00; /* Couleur de survol pour les liens de navigation */
 }
 
-h1, h2, h3 {
-    color: #333;
+main {
+    padding: 10px;
+    color: #373A40; /* Couleur du texte principal */
+}
+
+h1  {
+    color: #c95802; /* Couleur du titre principal */
+}
+
+h2, h3 {
+    color: #656667; /* Couleur des titres */
+}
+
+h2 {
+    border-bottom: 2px solid #DC5F00; /* Soulignement des sous-titres */
+    padding-bottom: 5px;
 }
 
 .faq-item {
     margin-bottom: 15px;
+    background-color: #EEEEEE;
+    padding: 10px;
+    border-left: 5px solid #DC5F00; /* Bordure gauche pour les items FAQ */
 }
 
 form {
     display: flex;
     flex-direction: column;
+    background-color: #686D76; /* Couleur de fond du formulaire */
+    padding: 20px;
+    border-radius: 5px;
 }
 
 label {
     margin-top: 10px;
+    color: #EEEEEE; /* Couleur des labels */
 }
 
 input, textarea, button {
     margin-top: 5px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #373A40; /* Bordure des champs de formulaire */
     border-radius: 5px;
+    background-color: #EEEEEE; /* Couleur de fond des champs de formulaire */
+    color: #373A40; /* Couleur du texte des champs de formulaire */
 }
 
 button {
-    background-color: #333;
-    color: white;
+    background-color: #DC5F00; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
     cursor: pointer;
     border: none;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #373A40; /* Couleur de survol du bouton */
+    color: #EEEEEE;
+}
+
+footer {
+    background-color: #373A40; /* Couleur de fond du pied de page */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
 }
