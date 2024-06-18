@@ -1,5 +1,6 @@
 
 {{ define "content" }}
+
 <div id="loginForm" class="form-hidden">
     <h2>Login</h2>
     <form action="/login" method="POST">
@@ -20,13 +21,7 @@
 </div>
 
 <main>
-    <div class="messages-container">
-        <!-- Example of an empty message block -->
-        <div class="message-block">
-            <h3>Message Title</h3>
-            <p>Message content goes here...</p>
-        </div>
-        <!-- Add more empty message blocks as needed -->
-    </div>
+    {{ template "categories" . }}
 </main>
 {{ end }}
+
