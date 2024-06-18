@@ -76,10 +76,10 @@ var webRoutes = WebRoutes{
     //     "/thread/post",
     //     handlers.PostThread,
     // },
-    // {
-    //     "error",
-    //     "GET",
-    //     "/err",
-    //     handlers.Err,
-    // },
+    {
+        "error",
+        "GET",
+        "/err",
+        handlers.Err,
+    },
 }
