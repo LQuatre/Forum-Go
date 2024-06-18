@@ -1,0 +1,9 @@
+ERROR 2024/06/18 14:21:13 helper.go:66: no such table: users Cannot find user
+ERROR 2024/06/18 14:21:25 helper.go:66: no such table: users Cannot find user
+ERROR 2024/06/18 14:21:30 helper.go:66: no such table: users Cannot find user
+ERROR 2024/06/18 14:21:38 helper.go:66: no such table: users Cannot find user
+ERROR 2024/06/18 14:22:34 helper.go:66: no such table: users Cannot find user
+ERROR 2024/06/18 14:23:10 helper.go:66: no such table: users Cannot find user
+ERROR 2024/06/18 14:25:56 helper.go:66: no such table: users Cannot find user
+ERROR 2024/06/18 14:26:07 helper.go:66: no such table: users Cannot create user
+ERROR 2024/06/18 14:26:12 helper.go:66: no such table: users Cannot find user
