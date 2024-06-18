@@ -5,7 +5,7 @@ import (
 )
 
 func Index(writer http.ResponseWriter, request *http.Request) {
-	generateHTML(writer, "", "index")
+	generateHTML(writer, "", "layout", "navbar", "index")
 }
 
 // func Err(writer http.ResponseWriter, request *http.Request)  {
