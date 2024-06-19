@@ -1,6 +1,9 @@
 package models
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Topic struct {
 	Id         int
@@ -62,15 +65,18 @@ func TopicByUUID(uuid string) (topic Topic, err error) {
 func GetAllTopics() (topics []Topic, err error) {
 	rows, err := Db.Query("SELECT id, uuid, name, category_id, created_at FROM topics")
 	if err != nil {
-		return
+		fmt.Printf("Error: %v", err)
+		return 
 	}
 	for rows.Next() {
 		topic := Topic{}
 		if err = rows.Scan(&topic.Id, &topic.Uuid, &topic.Name, &topic.CategoryId, &topic.CreatedAt); err != nil {
+			fmt.Printf("Error: %v", err)
 			return
 		}
 		topics = append(topics, topic)
 	}
 	rows.Close()
+	fmt.Printf("Topics: %v", topics)
 	return
 }
