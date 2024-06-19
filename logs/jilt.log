@@ -1,0 +1,4 @@
+ERROR 2024/06/19 16:54:50 helper.go:64: sql: no rows in result set Cannot create user
+ERROR 2024/06/19 16:56:17 helper.go:64: sql: no rows in result set Cannot create user
+ERROR 2024/06/19 16:59:55 helper.go:64: sql: no rows in result set Cannot create user
+ERROR 2024/06/19 17:00:52 helper.go:64: sql: Scan error on column index 0, name "id": converting NULL to int is unsupported Cannot find user
