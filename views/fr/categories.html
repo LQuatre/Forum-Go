@@ -1,14 +1,13 @@
-{{ define "categories" }}
+{{ define "content" }}
 
 <div class="categories-container">
     <h2>Categories</h2>
-    <ul>
-        {{ range .Categories }}
-        <li>
-            <a href="/category/{{ .ID }}">{{ .Name }}</a>
-        </li>
-        {{ end }}
-    </ul>
+    {{ range .Categories }}
+    <div class="category">
+        Category: {{ .Name }}<br>
+        <a href="/categories/category?id={{ .Uuid }}">Read more</a>
+    </div>
+    {{ end }}
 </div>
-
+    
 {{ end }}

@@ -21,6 +21,19 @@ func init() {
 		log.Fatalf("Open database error: %v\n", err)
 	}
 	fmt.Println("Database connection established")
+
+	// print all tables
+	rows, err := Db.Query("SELECT name FROM sqlite_master WHERE type='table';")
+	if err != nil {
+		log.Fatalf("Cannot query database: %v\n", err)
+	}
+	defer rows.Close()
+	fmt.Println("Tables in database:")
+	for rows.Next() {
+		var name string
+		rows.Scan(&name)
+		fmt.Println(name)
+	}
 }
 
 // create a random UUID with from RFC 4122
