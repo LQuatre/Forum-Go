@@ -1,6 +1,7 @@
 {{ define "navbar" }}
 
 <nav>
+    <link rel="stylesheet" type="text/css" href="/public/css/index.css">
     <ul>
         <li><a href="/public/template/categories.html">Categories</a></li>
         <li><a href="/public/template/create.html">Create Post</a></li>
@@ -14,5 +15,31 @@
         </li>
     </ul>
 </nav>
+<div id="loginForm" class="form-hidden">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        <input type="text" placeholder="Username" name="username" required>
+        <input type="password" placeholder="Password" name="password" required>
+        <button type="submit" class="button">Login</button>
+    </form>
+</div>
+
+<div id="createAccountForm" class="form-hidden">
+    <h2>Create Account</h2>
+    <form action="/create-profile" method="POST">
+        <input type="text" placeholder="Username" name="username" required>
+        <input type="email" placeholder="Email" name="email" required>
+        <input type="password" placeholder="Password" name="password" required>
+        <button type="submit" class="button">Create Profile</button>
+    </form>
+</div>
+
+<footer>
+    
+</footer>
+
+<script>
+    src="/public/js/index"
+</script>
 
 {{ end }}
