@@ -3,7 +3,7 @@
 <main>
   <section id="login">
     <h2>Login</h2>
-    <form action="/login" method="POST">
+    <form role="form" action="/authenticate" method="post">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" />
       <label for="password">Password:</label>
@@ -13,9 +13,9 @@
     {{ if .ErrUserNotFound }}
     <p class="error">{{ .ErrUserNotFound }}</p>
     {{ end }}
-    <p>Don't have an account? <a href="/SignUp">SignUp</a></p>
+    <p>Don't have an account? <a href="/signup">SignUp</a></p>
     <div class="back">
-      <button onclick="window.location.href='/artists'">Back</button>
+      <button onclick="window.location.href='/'">Back</button>
     </div>
   </section>
 </main>
