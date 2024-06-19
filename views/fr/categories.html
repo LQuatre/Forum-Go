@@ -1,0 +1,14 @@
+{{ define "categories" }}
+
+<div class="categories-container">
+    <h2>Categories</h2>
+    <ul>
+        {{ range .Categories }}
+        <li>
+            <a href="/category/{{ .ID }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+
+{{ end }}

@@ -1,0 +1,15 @@
+{
+  "App": {
+    "Address": "127.0.0.1:8080",
+    "Static": "public",
+    "Log": "logs",
+    "Locale": "locales",
+    "Language": "fr"
+  },
+  "Db": {
+    "Driver": "sqlite3",
+    "Address": "./jilt.db",
+    "Database": "",
+    "Password": ""
+  }
+}
