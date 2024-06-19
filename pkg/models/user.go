@@ -16,15 +16,6 @@ type User struct {
 }
 
 func (user *User) Create() (err error) {
-<<<<<<< HEAD
-	statement := "INSERT INTO users (uuid, name, email, password, created_at) VALUES (?, ?, ?, ?, ?)"
-	stmt, err := Db.Prepare(statement)
-	if err != nil {
-		return
-	}
-	defer stmt.Close()
-
-=======
 	// Check if name or email already exist
 	existingUser, err := UserByName(user.Name)
 	if err != nil {
@@ -51,7 +42,6 @@ func (user *User) Create() (err error) {
 	}
 	defer stmt.Close()
 
->>>>>>> 8fe4e452f5f0b09a8ecbf7855b39ea78c56d5af3
 	uuid := createUUID()
 	_, err = stmt.Exec(uuid, user.Name, user.Email, Encrypt(user.Password), time.Now())
 	return
@@ -61,9 +51,6 @@ func UserByEmail(email string) (user User, err error) {
 	user = User{}
 	err = Db.QueryRow("SELECT id, uuid, name, email, password, created_at FROM users WHERE email = ?", email).
 		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
-<<<<<<< HEAD
-	return
-=======
 	return user, err
 }
 
@@ -72,18 +59,13 @@ func UserByName(name string) (user User, err error) {
 	err = Db.QueryRow("SELECT id, uuid, name, email, password, created_at FROM users WHERE name = ?", name).
 		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
 	return user, err
->>>>>>> 8fe4e452f5f0b09a8ecbf7855b39ea78c56d5af3
 }
 
 func UserByUUID(uuid string) (user User, err error) {
 	user = User{}
 	err = Db.QueryRow("SELECT id, uuid, name, email, password, created_at FROM users WHERE uuid = ?", uuid).
 		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
-<<<<<<< HEAD
-	return
-=======
 	return user, err
->>>>>>> 8fe4e452f5f0b09a8ecbf7855b39ea78c56d5af3
 }
 
 func (user *User) Update() (err error) {
@@ -95,11 +77,7 @@ func (user *User) Update() (err error) {
 	defer stmt.Close()
 
 	_, err = stmt.Exec(user.Name, user.Email, user.Id)
-<<<<<<< HEAD
-	return
-=======
 	return err
->>>>>>> 8fe4e452f5f0b09a8ecbf7855b39ea78c56d5af3
 }
 
 func (user *User) Delete() (err error) {
@@ -157,7 +135,6 @@ func (user *User) CreateThread(topicId int, title string) (thread Thread, err er
 
 	stmt.QueryRow(uuid).Scan(&thread.Id, &thread.Uuid, &thread.TopicId, &thread.UserId, &thread.Title, &thread.CreatedAt)
 	return
-<<<<<<< HEAD
 }
 
 func (user *User) CreateCategory(name string) (category Category, err error) {
@@ -176,8 +153,6 @@ func (user *User) CreateCategory(name string) (category Category, err error) {
 
 	stmt.QueryRow(uuid).Scan(&category.Id, &category.Uuid, &category.Name, &category.CreatedAt)
 	return
-=======
->>>>>>> 8fe4e452f5f0b09a8ecbf7855b39ea78c56d5af3
 }
 
 func (user *User) CreatePost(thread *Thread, body string) (*Post, error) {
