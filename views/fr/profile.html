@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/profile.css" />
-    <link rel="stylesheet" href="../assets/css/profile.css" />
-    <title>Your Profile</title>
-</head>
-<body>
-    <div class="profile-container"></div>
-        <h1>Your Profile</h1>
-        <div class="profile-details">
-            <p><strong>Name:</strong> {{ .Username }}</p>
-            <p><strong>Email:</strong> {{ .Mail }}</p>
-        </div>
-        <button id="edit-profile">Edit Profile</button>
+{{ define "content" }}
+
+<div class="profile-container"></div>
+    <h1>Your Profile</h1>
+    <div class="profile-details">
+        <p><strong>Name:</strong> {{ .Username }}</p>
+        <p><strong>Email:</strong> {{ .Mail }}</p>
     </div>
-</body>
-</html>
+    <button id="edit-profile">Edit Profile</button>
+</div>
+
+{{ end }}

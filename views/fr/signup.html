@@ -1,9 +1,9 @@
-{{ define "content "}}
+{{ define "content" }}
 
 <main>
   <section id="signup">
     <h2>Signup</h2>
-    <form action="/signup" method="POST">
+    <form role="form" action="/signup_account" method="post">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" />
       <label for="password">Password:</label>
@@ -17,7 +17,7 @@
     {{ end }}
     <p>Already have an account? <a href="/login">Login</a></p>
     <div class="back">
-      <button onclick="window.location.href='/artists'">Back</button>
+      <button onclick="window.location.href='/'">Back</button>
     </div>
   </section>
 </main>
