@@ -1,0 +1,16 @@
+ERROR 2024/06/20 16:05:51 helper.go:64: no such table: users Cannot find user
+ERROR 2024/06/20 16:08:46 helper.go:64: no such table: users Cannot create user
+ERROR 2024/06/20 16:08:50 helper.go:64: no such table: users Cannot find user
+ERROR 2024/06/20 16:08:59 helper.go:64: no such table: users Cannot find user
+ERROR 2024/06/20 16:12:15 helper.go:64: sql: Scan error on column index 0, name "id": converting NULL to int is unsupported Cannot find user
+ERROR 2024/06/20 16:13:13 helper.go:64: sql: Scan error on column index 0, name "id": converting NULL to int is unsupported Cannot find email
+ERROR 2024/06/20 16:34:30 helper.go:64: 4 values for 3 columns Cannot create session
+ERROR 2024/06/20 16:35:34 helper.go:64: 4 values for 3 columns Cannot create session
+WARNING 2024/06/20 16:55:59 helper.go:69: <nil> Failed to get cookie
+WARNING 2024/06/20 16:56:21 helper.go:69: <nil> Failed to get cookie
+ERROR 2024/06/20 17:00:57 helper.go:67: sql: no rows in result set Cannot create session
+ERROR 2024/06/20 17:00:59 helper.go:67: sql: no rows in result set Cannot create session
+ERROR 2024/06/20 17:01:02 helper.go:67: sql: no rows in result set Cannot create session
+ERROR 2024/06/20 17:01:09 helper.go:67: sql: no rows in result set Cannot create session
+WARNING 2024/06/20 17:07:22 helper.go:72: <nil> Failed to get cookie
+WARNING 2024/06/20 17:07:42 helper.go:72: <nil> Failed to get cookie

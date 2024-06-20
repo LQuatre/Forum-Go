@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/nicksnyder/go-i18n/v2/i18n"
@@ -52,10 +53,11 @@ func CreateCategory(writer http.ResponseWriter, request *http.Request) {
 	}
 }
 
-// GET /category/read
+// GET /category/category
 func GoCategory(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
-	uuid := vals.Get("id")
+	uuid := vals.Get("uuid")
+	fmt.Println("UUID: ", uuid)
 	category, err := models.CategoryByUUID(uuid)
 	if err != nil {
 		msg := localizer.MustLocalize(&i18n.LocalizeConfig{
@@ -67,7 +69,7 @@ func GoCategory(writer http.ResponseWriter, request *http.Request) {
 		if err != nil {
 			generateHTML(writer, &category, "layout", "public.navbar", "public.category")
 		} else {
-			generateHTML(writer, &category, "layout", "auth.navbar", "auth.category")
+			generateHTML(writer, &category, "auth.layout", "auth.navbar", "auth.category")
 		}
 	}
 }

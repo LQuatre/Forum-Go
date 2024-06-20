@@ -3,11 +3,10 @@ package models
 import "time"
 
 type Thread struct {
-	Id        int
 	Uuid      string
 	Title     string
-	TopicId   int
-	UserId    int
+	TopicUuId int
+	UserUuId  int
 	CreatedAt time.Time
 }
 
@@ -18,7 +17,7 @@ func (thread *Thread) CreatedAtDate() string {
 
 // get the number of posts in a thread
 func (thread *Thread) NumReplies() (count int) {
-	rows, err := Db.Query("SELECT count(*) FROM posts WHERE thread_id = ?", thread.Id)
+	rows, err := Db.Query("SELECT count(*) FROM posts WHERE thread_uuid = ?", thread.UserUuId)
 	if err != nil {
 		return
 	}
@@ -33,13 +32,13 @@ func (thread *Thread) NumReplies() (count int) {
 
 // get posts to a thread
 func (thread *Thread) Posts() (posts []Post, err error) {
-	rows, err := Db.Query("SELECT id, uuid, body, user_id, thread_id, created_at FROM posts WHERE thread_id = ?", thread.Id)
+	rows, err := Db.Query("SELECT uuid, body, user_id, thread_id, created_at FROM posts WHERE thread_uuid = ?", thread.Uuid)
 	if err != nil {
 		return
 	}
 	for rows.Next() {
 		post := Post{}
-		if err = rows.Scan(&post.Id, &post.Uuid, &post.Body, &post.UserId, &post.ThreadId, &post.CreatedAt); err != nil {
+		if err = rows.Scan(&post.Uuid, &post.Body, &post.UserUuId, &post.ThreadUuId, &post.CreatedAt); err != nil {
 			return
 		}
 		posts = append(posts, post)
@@ -49,14 +48,14 @@ func (thread *Thread) Posts() (posts []Post, err error) {
 }
 
 // Get all threads in a topic
-func ThreadsByTopic(topicId int) (threads []Thread, err error) {
-	rows, err := Db.Query("SELECT id, uuid, title, topic_id, user_id, created_at FROM threads WHERE topic_id = ? ORDER BY created_at DESC", topicId)
+func ThreadsByTopic(topicUuId int) (threads []Thread, err error) {
+	rows, err := Db.Query("SELECT uuid, title, topic_uuid, user_id, created_at FROM threads WHERE topic_uuid = ? ORDER BY created_at DESC", topicUuId)
 	if err != nil {
 		return
 	}
 	for rows.Next() {
 		thread := Thread{}
-		if err = rows.Scan(&thread.Id, &thread.Uuid, &thread.Title, &thread.TopicId, &thread.UserId, &thread.CreatedAt); err != nil {
+		if err = rows.Scan(&thread.Uuid, &thread.Title, &thread.TopicUuId, &thread.UserUuId, &thread.CreatedAt); err != nil {
 			return
 		}
 		threads = append(threads, thread)
@@ -68,15 +67,15 @@ func ThreadsByTopic(topicId int) (threads []Thread, err error) {
 // Get a thread by the UUID
 func ThreadByUUID(uuid string) (thread Thread, err error) {
 	thread = Thread{}
-	err = Db.QueryRow("SELECT id, uuid, title, topic_id, user_id, created_at FROM threads WHERE uuid = ?", uuid).
-		Scan(&thread.Id, &thread.Uuid, &thread.Title, &thread.TopicId, &thread.UserId, &thread.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, title, topic_id, user_id, created_at FROM threads WHERE uuid = ?", uuid).
+		Scan(&thread.Uuid, &thread.Title, &thread.TopicUuId, &thread.UserUuId, &thread.CreatedAt)
 	return
 }
 
 // Get the user who started this thread
 func (thread *Thread) User() (user User) {
 	user = User{}
-	Db.QueryRow("SELECT id, uuid, name, email, created_at FROM users WHERE id = ?", thread.UserId).
-		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.CreatedAt)
+	Db.QueryRow("SELECT uuid, name, email, created_at FROM users WHERE uuid = ?", thread.UserUuId).
+		Scan(&user.Uuid, &user.Name, &user.Email, &user.CreatedAt)
 	return
 }
