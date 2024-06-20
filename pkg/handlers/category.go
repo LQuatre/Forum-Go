@@ -7,6 +7,19 @@ import (
 	"jilt.com/m/pkg/models"
 )
 
+func Categories(writer http.ResponseWriter, request *http.Request) {
+	_, err := session(writer, request)
+	if err != nil {
+		http.Redirect(writer, request, "/login", 302)
+	} else {
+		categories, err := models.Categories()
+		if err != nil {
+			danger(err, "Cannot get categories")
+		}
+		generateHTML(writer, &categories, "layout", "auth.navbar", "categories")
+	}
+}
+
 // GET /category/new
 func NewCategory(writer http.ResponseWriter, request *http.Request) {
 	_, err := session(writer, request)

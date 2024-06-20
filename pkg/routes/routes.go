@@ -81,7 +81,7 @@ var webRoutes = WebRoutes{
 		"Category",
 		"GET",
 		"/category",
-		handlers.Category,
+		handlers.Categories,
 	},
 	{
 		"newCategory",
