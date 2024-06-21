@@ -1,0 +1,40 @@
+
+{{ define "content" }}
+
+<main>
+    <section id="index">
+
+        <div id="loginForm" class="form-hidden">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <input type="text" placeholder="Username" name="username" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <button type="submit" class="button">Login</button>
+            </form>
+        </div>
+        
+        <div id="createAccountForm" class="form-hidden">
+            <h2>Create Account</h2>
+            <form action="/create-profile" method="POST">
+                <input type="text" placeholder="Username" name="username" required>
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <button type="submit" class="button">Create Profile</button>
+            </form>
+        </div>
+
+        <h2>Forum</h2>
+        <p>Welcome to the JILT Forum. This is a place where you can discuss anything related to programming.</p>
+        <p>Feel free to ask questions, share your knowledge, and help others.</p>
+        <p>Happy coding!</p>
+        <!-- <div class="back">
+            <button onclick="window.location.href='/login'">Login</button>
+            <button onclick="window.location.href='/signup'">Signup</button>
+        </div> -->
+
+        
+        {{ template "categories" . }}
+    </section>
+</main>
+{{ end }}
+
