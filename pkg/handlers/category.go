@@ -53,7 +53,7 @@ func CreateCategory(writer http.ResponseWriter, request *http.Request) {
 	}
 }
 
-// GET /category/category
+// GET /categories/category
 func GoCategory(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
 	uuid := vals.Get("uuid")

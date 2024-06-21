@@ -1,21 +1,21 @@
-{{ define "content "}}
+{{ define "content" }}
 
 <main>
-    <section id="category">
-        <h2>Category</h2>
-        <form role="form" action="/category/update" method="post">
-            <input type="hidden" name="uuid" value="{{ .Uuid }}">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="{{ .Name }}" />
-            <button type="submit">Update</button>
-        </form>
-        <form role="form" action="/category/delete" method="post">
-            <input type="hidden" name="uuid" value="{{ .Uuid }}">
-            <button type="submit">Delete</button>
-        </form>
-        <div class="back">
-            <button onclick="window.location.href='/categories'">Back</button>
-        </div>
-    </section>
+  <section id="category">
+    <h2>Category</h2>
+    <form role="form" action="/category/update" method="post">
+      <input type="hidden" name="uuid" value="{{ .Uuid }}" />
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="{{ .Name }}" />
+      <button type="submit">Update</button>
+    </form>
+    <form role="form" action="/category/delete" method="post">
+      <input type="hidden" name="uuid" value="{{ .Uuid }}" />
+      <button type="submit">Delete</button>
+    </form>
+    <div class="back">
+      <button onclick="window.location.href='/categories'">Back</button>
+    </div>
+  </section>
 </main>
 {{ end }}
