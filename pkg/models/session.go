@@ -1,24 +1,28 @@
 package models
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Session struct {
-	Id        int
 	Uuid      string
 	Email     string
-	UserId    int
+	UserUuId  string
 	CreatedAt time.Time
 }
 
 // Check if session is valid in the database
 func (session *Session) Check() (valid bool, err error) {
-	err = Db.QueryRow("SELECT id, uuid, email, user_id, created_at FROM sessions WHERE uuid = ?", session.Uuid).
-		Scan(&session.Id, &session.Uuid, &session.Email, &session.UserId, &session.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, email, user_uuid, created_at FROM sessions WHERE uuid = ?", session.Uuid).
+		Scan(&session.Uuid, &session.Email, &session.UserUuId, &session.CreatedAt)
 	if err != nil {
+		fmt.Printf("error checking session %v\n", err)
 		valid = false
 		return
 	}
-	if session.Id != 0 {
+	if session.UserUuId != "" {
+		fmt.Printf("session.UserUuId %v\n", session.UserUuId)
 		valid = true
 	}
 	return
@@ -40,8 +44,8 @@ func (session *Session) DeleteByUUID() (err error) {
 // Get the user from the session
 func (session *Session) User() (user User, err error) {
 	user = User{}
-	err = Db.QueryRow("SELECT id, uuid, name, email, created_at FROM users WHERE id = ?", session.UserId).
-		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, name, email, created_at FROM users WHERE uuid = ?", session.UserUuId).
+		Scan(&user.Uuid, &user.Name, &user.Email, &user.CreatedAt)
 	return
 }
 

@@ -27,10 +27,13 @@
         <p>Welcome to the JILT Forum. This is a place where you can discuss anything related to programming.</p>
         <p>Feel free to ask questions, share your knowledge, and help others.</p>
         <p>Happy coding!</p>
-        <div class="back">
+        <!-- <div class="back">
             <button onclick="window.location.href='/login'">Login</button>
             <button onclick="window.location.href='/signup'">Signup</button>
-        </div>
+        </div> -->
+
+        
+        {{ template "categories" . }}
     </section>
 </main>
 {{ end }}

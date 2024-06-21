@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
@@ -36,9 +37,9 @@ func SignupAccount(writer http.ResponseWriter, request *http.Request) {
 // POST /authenticate
 func Authenticate(writer http.ResponseWriter, request *http.Request) {
 	err := request.ParseForm()
-	user, err := models.UserByName(request.PostFormValue("name"))
+	user, err := models.UserByEmail(request.PostFormValue("email"))
 	if err != nil {
-		danger(err, "Cannot find user")
+		danger(err, "Cannot find email")
 	}
 	if user.Password == models.Encrypt(request.PostFormValue("password")) {
 		session, err := user.CreateSession()
@@ -50,6 +51,8 @@ func Authenticate(writer http.ResponseWriter, request *http.Request) {
 			Value:    session.Uuid,
 			HttpOnly: true,
 		}
+
+		fmt.Println("Session UUID: ", session.Uuid)
 		http.SetCookie(writer, &cookie)
 		http.Redirect(writer, request, "/", 302)
 	} else {

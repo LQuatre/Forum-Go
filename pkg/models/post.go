@@ -3,12 +3,11 @@ package models
 import "time"
 
 type Post struct {
-	Id        int
-	Uuid      string
-	Body      string
-	UserId    int
-	ThreadId  int
-	CreatedAt time.Time
+	Uuid       string
+	Body       string
+	UserUuId   int
+	ThreadUuId int
+	CreatedAt  time.Time
 }
 
 func (post *Post) CreatedAtDate() string {
@@ -18,7 +17,7 @@ func (post *Post) CreatedAtDate() string {
 // Get the user who wrote the post
 func (post *Post) User() (user User) {
 	user = User{}
-	Db.QueryRow("SELECT id, uuid, name, email, created_at FROM users WHERE id = ?", post.UserId).
-		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.CreatedAt)
+	Db.QueryRow("SELECT uuid, name, email, created_at FROM users WHERE uuid = ?", post.UserUuId).
+		Scan(&user.Uuid, &user.Name, &user.Email, &user.CreatedAt)
 	return
 }

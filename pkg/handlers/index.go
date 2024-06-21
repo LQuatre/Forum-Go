@@ -1,21 +1,25 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
 )
 
 func Index(writer http.ResponseWriter, request *http.Request) {
-	topics, err := models.GetAllTopics()
+	categories, err := models.GetAllCategories()
+	fmt.Println(categories)
 	if err != nil {
 		http.Redirect(writer, request, "/err?msg=Cannot get topics", http.StatusTemporaryRedirect)
 	} else {
 		_, err := session(writer, request)
 		if err != nil {
-			generateHTML(writer, topics, "layout", "navbar", "index")
+			fmt.Println("No session")
+			generateHTML(writer, nil, "layout", "navbar", "index")
 		} else {
-			generateHTML(writer, topics, "layout", "auth.navbar", "index")
+			fmt.Println("Session")
+			generateHTML(writer, categories, "layout", "auth.navbar", "auth.index", "categories")
 		}
 	}
 }
