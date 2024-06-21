@@ -1,4 +1,0 @@
-ERROR 2024/06/21 14:32:53 helper.go:64: no such table: users Cannot create user
-ERROR 2024/06/21 14:32:58 helper.go:64: no such table: users Cannot create user
-ERROR 2024/06/21 14:33:19 helper.go:64: no such table: users Cannot find user
-ERROR 2024/06/21 15:05:46 helper.go:64: no such table: users Cannot find user

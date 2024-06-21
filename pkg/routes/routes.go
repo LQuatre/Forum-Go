@@ -80,25 +80,25 @@ var webRoutes = WebRoutes{
 	{
 		"Category",
 		"GET",
-		"/category",
+		"/categories",
 		handlers.Categories,
 	},
 	{
 		"newCategory",
 		"GET",
-		"/category/new",
+		"/categories/new",
 		handlers.NewCategory,
 	},
 	{
 		"createCategory",
 		"POST",
-		"/category/create",
+		"/categories/create",
 		handlers.CreateCategory,
 	},
 	{
 		"goCategory",
 		"GET",
-		"/category/category",
+		"/categories/category",
 		handlers.GoCategory,
 	},
 	{
