@@ -8,9 +8,8 @@
   },
   "Db": {
     "Driver": "sqlite3",
-    "Address": "localhost:3306",
-    "Database": "jilt",
-    "User": "root",
-    "Password": "root"
+    "Address": "./jilt.db",
+    "Database": "",
+    "Password": ""
   }
 }

@@ -1,0 +1,20 @@
+{{ define "content" }}
+
+<div class="categories-container">
+  <!-- for the admins -->
+  <form action="/categories/create" method="POST">
+    <input type="text" placeholder="Name" name="name" required />
+    <button type="submit" class="button">Create Category</button>
+  </form>
+
+  {{ range . }}
+  <div class="category">
+    <h3>{{ .Name }}</h3>
+    <a href="/categories/category?uuid={{ .Uuid }}" class="category-a"
+      >Read more</a
+    >
+  </div>
+  {{ end }}
+</div>
+
+{{ end }}

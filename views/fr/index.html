@@ -1,49 +1,18 @@
-{{ define "layout" }}
+{{ define "content" }}
 
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Exemple</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      .navbar {
-        display: flex;
-        justify-content: space-around;
-        background-color: #333;
-        padding: 1rem;
-      }
-      .navbar a {
-        color: white;
-        text-decoration: none;
-        padding: 14px 20px;
-      }
-      .navbar a:hover {
-        background-color: #ddd;
-        color: black;
-      }
-      .content {
-        padding: 2rem;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar">
-      <a href="#home">Accueil</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">À propos</a>
-    </nav>
-    <div class="content">
-      <h1>Hello World</h1>
+<main>
+  <section id="index">
+    <h2>Forum</h2>
+    <p>
+      Welcome to the JILT Forum. This is a place where you can discuss anything
+      related to programming.
+    </p>
+    <p>Feel free to ask questions, share your knowledge, and help others.</p>
+    <p>Happy coding!</p>
+    <div class="back">
+      <button onclick="window.location.href='/login'">Login</button>
+      <button onclick="window.location.href='/signup'">Signup</button>
     </div>
-  </body>
-</html>
-
+  </section>
+</main>
 {{ end }}

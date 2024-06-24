@@ -1,0 +1,25 @@
+{{ define "content" }}
+
+<main>
+  <section id="signup">
+    <h2>Signup</h2>
+    <form role="form" action="/signup_account" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" />
+      <button type="submit">signup</button>
+    </form>
+    {{ if .ErrUserNotFound }}
+    <p class="error">{{ .ErrUserNotFound }}</p>
+    {{ end }}
+    <p>Already have an account? <a href="/login">Login</a></p>
+    <div class="back">
+      <button onclick="window.location.href='/'">Back</button>
+    </div>
+  </section>
+</main>
+
+{{ end }}
