@@ -116,7 +116,7 @@ func (user *User) Session() (session Session, err error) {
 	return
 }
 
-func (user *User) CreateThread(topicUuId int, title string) (thread Thread, err error) {
+func (user *User) CreateThread(topicUuId string, title string) (thread Thread, err error) {
 	statement := "INSERT INTO threads (uuid, topic_uuid, user_uuid, title, created_at) VALUES (?, ?, ?, ?, ?)"
 	stmt, err := Db.Prepare(statement)
 	if err != nil {
@@ -171,8 +171,11 @@ func (user *User) CreateTopic(name, categoryuuid string) (topic Topic, err error
 }
 
 
-func (user *User) CreatePost(thread *Thread, body string) (*Post, error) {
-	statement := "INSERT INTO posts (uuid, body, user_uuid, thread_uuid, created_at) VALUES (?, ?, ?, ?, ?)"
+func (user *User) CreateComment(thread *Thread, body string) (*Comment, error) {
+	fmt.Printf("user: %v\n", user)
+	fmt.Printf("thread: %v\n", thread)
+	fmt.Printf("body: %v\n", body)
+	statement := "INSERT INTO comments (uuid, body, user_uuid, thread_uuid, created_at) VALUES (?, ?, ?, ?, ?)"
 	stmt, err := Db.Prepare(statement)
 	if err != nil {
 		return nil, err
@@ -185,7 +188,11 @@ func (user *User) CreatePost(thread *Thread, body string) (*Post, error) {
 		return nil, err
 	}
 
-	post := &Post{}
-	stmt.QueryRow(uuid).Scan(&post.Uuid, &post.Body, &post.UserUuId, &post.ThreadUuId, &post.CreatedAt)
-	return post, nil
+	comment := &Comment{}
+	stmt.QueryRow(uuid).Scan(&comment.Uuid, &comment.Body, &comment.UserUuId, &comment.ThreadUuId, &comment.CreatedAt)
+	return comment, nil
+}
+
+func (user *User) GetName() string {
+	return user.Name
 }

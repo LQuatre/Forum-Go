@@ -1,0 +1,26 @@
+{{ define "content" }}
+
+<main>
+  <section id="topic">
+    <h2>Topic</h2>
+
+    <h3>{{ .Name }}</h3>
+
+    <!-- <form role="form" action="/thread/create" method="POST">
+      <label for="Name">Title:</label>
+      <input type="text" id="name" name="name" />
+      <input type="hidden" name="topic-uuid" value="{{ .Uuid }}" />
+      <button type="submit">Create</button>
+    </form> -->
+
+    {{ range .Threads }}
+    <div class="thread">
+      <a href="/thread/read?uuid={{ .Uuid }}" class="thread-a">{{ .Title }}</a>
+      <p>{{ .CreatedAt }}</p>
+    </div>
+
+    {{ end }}
+  </section>
+</main>
+
+{{ end }}

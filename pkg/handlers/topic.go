@@ -68,3 +68,24 @@ func DeleteTopic(writer http.ResponseWriter, request *http.Request) {
 }
 
 // GET /topics/topic
+func GoTopic(writer http.ResponseWriter, request *http.Request) {
+	vals := request.URL.Query()
+	topic, err := models.GetTopicByUUID(vals.Get("uuid"))
+	if err != nil {
+		danger(err, "Cannot read topic")
+		http.Redirect(writer, request, "/err?msg=Cannot read topic", 302)
+	} else {
+		threads, err := models.ThreadsByTopicUUID(topic.Uuid)
+		if err != nil {
+			danger(err, "Cannot get threads")
+			http.Redirect(writer, request, "/err?msg=Cannot get threads", 302)
+		}
+		topic.Threads = threads
+		_, err = session(writer, request)
+		if err != nil {
+			http.Redirect(writer, request, "/login", 302)
+		} else {
+			generateHTML(writer, &topic, "layout", "auth.navbar", "auth.topic")
+		}
+	}
+}

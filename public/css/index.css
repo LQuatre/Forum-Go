@@ -23,14 +23,15 @@ header h1 {
 }
 
 main {
-  padding: 20px;
   display: flex;
   justify-content: center;
   /* align-items: center; */
   height: calc(100vh - 160px); /* Adjust for header and footer */
+  width: 100%;
 }
 
 footer {
+  position: absolute;
   background-color: #343a40;
   color: white;
   text-align: center;

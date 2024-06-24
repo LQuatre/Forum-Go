@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/nicksnyder/go-i18n/v2/i18n"
@@ -14,22 +13,7 @@ func Categories(writer http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		http.Redirect(writer, request, "/login", 302)
 	} else {
-		categories, err := models.Categories()
-		if err != nil {
-			danger(err, "Cannot get categories")
-		}
-		topics, err := models.Topics()
-		for i, _ := range categories {
-			for j, _ := range topics {
-				if topics[j].CategoryUuId == categories[i].Uuid {
-					categories[i].Topics = append(categories[i].Topics, topics[j])
-				}
-			}
-		}
-		if err != nil {
-			danger(err, "Cannot get topics")
-		}
-		generateHTML(writer, &categories, "layout", "auth.navbar", "auth.categories")
+		http.Redirect(writer, request, "/", 302)
 	}
 }
 
@@ -73,7 +57,6 @@ func DeleteCategory(writer http.ResponseWriter, request *http.Request) {
 	} else {
 		vals := request.URL.Query()
 		uuid := vals.Get("uuid")
-		fmt.Println("UUID: ", uuid)
 		category, err := models.CategoryByUUID(uuid)
 		if err != nil {
 			danger(err, "Cannot delete category")
@@ -89,7 +72,6 @@ func DeleteCategory(writer http.ResponseWriter, request *http.Request) {
 func GoCategory(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
 	uuid := vals.Get("uuid")
-	fmt.Println("UUID: ", uuid)
 	category, err := models.CategoryByUUID(uuid)
 	if err != nil {
 		msg := localizer.MustLocalize(&i18n.LocalizeConfig{

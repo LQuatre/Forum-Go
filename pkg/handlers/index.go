@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
@@ -18,7 +17,6 @@ func Index(writer http.ResponseWriter, request *http.Request) {
 		}
 	}
 
-	fmt.Println(categories)
 	if err != nil {
 		http.Redirect(writer, request, "/err?msg=Cannot get topics", http.StatusTemporaryRedirect)
 	} else {
