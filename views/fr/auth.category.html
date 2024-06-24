@@ -3,19 +3,34 @@
 <main>
   <section id="category">
     <h2>Category</h2>
-    <form role="form" action="/category/update" method="post">
-      <input type="hidden" name="uuid" value="{{ .Uuid }}" />
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" value="{{ .Name }}" />
-      <button type="submit">Update</button>
+
+    <form role="form" action="/topics/create" method="POST">
+      <label for="Name">Title:</label>
+      <input type="text" id="name" name="name" />
+      <input type="hidden" name="cat-uuid" value="{{ .Uuid }}" />
+      <button type="submit">Create</button>
     </form>
-    <form role="form" action="/category/delete" method="post">
-      <input type="hidden" name="uuid" value="{{ .Uuid }}" />
-      <button type="submit">Delete</button>
-    </form>
-    <div class="back">
-      <button onclick="window.location.href='/categories'">Back</button>
+
+    {{ range .Topics }}
+
+    <div class="topic">
+      <a href="/topics/topic?uuid={{ .Uuid }}" class="topic-a">{{ .Name }}</a>
+      <p>{{ .CreatedAt }}</p>
     </div>
+
+    {{ end }}
+
+    <!-- for the admins -->
+    <!-- <form role="form" action="/categories/update" method="POST">
+        <input type="hidden" name="cat-uuid" value="{{ .Uuid }}" />
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ .Name }}" />
+        <button type="submit">Update</button>
+      </form>
+      <a href="/categories/delete?uuid={{ .Uuid }}" class="delete">Delete</a>
+      <div class="back">
+        <button onclick="window.location.href='/categories'">Back</button>
+      </div> -->
   </section>
 </main>
 {{ end }}

@@ -9,17 +9,24 @@ import (
 
 func Index(writer http.ResponseWriter, request *http.Request) {
 	categories, err := models.GetAllCategories()
+	topics, err := models.GetAllTopics()
+	for i, _ := range categories {
+		for j, _ := range topics {
+			if topics[j].CategoryUuId == categories[i].Uuid {
+				categories[i].Topics = append(categories[i].Topics, topics[j])
+			}
+		}
+	}
+
 	fmt.Println(categories)
 	if err != nil {
 		http.Redirect(writer, request, "/err?msg=Cannot get topics", http.StatusTemporaryRedirect)
 	} else {
 		_, err := session(writer, request)
 		if err != nil {
-			fmt.Println("No session")
 			generateHTML(writer, nil, "layout", "navbar", "index")
 		} else {
-			fmt.Println("Session")
-			generateHTML(writer, categories, "layout", "auth.navbar", "auth.index", "categories")
+			generateHTML(writer, categories, "layout", "auth.navbar", "auth.index")
 		}
 	}
 }

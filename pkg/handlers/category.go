@@ -8,6 +8,7 @@ import (
 	"jilt.com/m/pkg/models"
 )
 
+// GET /categories
 func Categories(writer http.ResponseWriter, request *http.Request) {
 	_, err := session(writer, request)
 	if err != nil {
@@ -17,7 +18,18 @@ func Categories(writer http.ResponseWriter, request *http.Request) {
 		if err != nil {
 			danger(err, "Cannot get categories")
 		}
-		generateHTML(writer, &categories, "layout", "auth.navbar", "categories")
+		topics, err := models.Topics()
+		for i, _ := range categories {
+			for j, _ := range topics {
+				if topics[j].CategoryUuId == categories[i].Uuid {
+					categories[i].Topics = append(categories[i].Topics, topics[j])
+				}
+			}
+		}
+		if err != nil {
+			danger(err, "Cannot get topics")
+		}
+		generateHTML(writer, &categories, "layout", "auth.navbar", "auth.categories")
 	}
 }
 
@@ -49,7 +61,27 @@ func CreateCategory(writer http.ResponseWriter, request *http.Request) {
 		if _, err := user.CreateCategory(name); err != nil {
 			danger(err, "Cannot create category")
 		}
-		http.Redirect(writer, request, "/", 302)
+		http.Redirect(writer, request, "/categories", 302)
+	}
+}
+
+// POST /categories/delete
+func DeleteCategory(writer http.ResponseWriter, request *http.Request) {
+	_, err := session(writer, request)
+	if err != nil {
+		http.Redirect(writer, request, "/login", 302)
+	} else {
+		vals := request.URL.Query()
+		uuid := vals.Get("uuid")
+		fmt.Println("UUID: ", uuid)
+		category, err := models.CategoryByUUID(uuid)
+		if err != nil {
+			danger(err, "Cannot delete category")
+		}
+		if err := category.Delete(); err != nil {
+			danger(err, "Cannot delete category")
+		}
+		http.Redirect(writer, request, "/categories", 302)
 	}
 }
 
@@ -65,7 +97,15 @@ func GoCategory(writer http.ResponseWriter, request *http.Request) {
 		})
 		errorMessage(writer, request, msg)
 	} else {
-		_, err := session(writer, request)
+		topics, err := models.TopicsFromCategoryUUID(uuid)
+		if err != nil {
+			msg := localizer.MustLocalize(&i18n.LocalizeConfig{
+				MessageID: "cannot_get_topics",
+			})
+			errorMessage(writer, request, msg)
+		}
+		category.Topics = topics
+		_, err = session(writer, request)
 		if err != nil {
 			generateHTML(writer, &category, "layout", "public.navbar", "public.category")
 		} else {

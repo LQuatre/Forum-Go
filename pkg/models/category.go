@@ -1,11 +1,15 @@
 package models
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Category struct {
 	Uuid      string
 	Name      string
 	CreatedAt time.Time
+	Topics    []Topic
 }
 
 func (category *Category) Create(name string) (err error) {
@@ -20,6 +24,18 @@ func (category *Category) Create(name string) (err error) {
 	category.Name = name
 	category.CreatedAt = time.Now()
 	_, err = stmt.Exec(category.Uuid, category.Name, category.CreatedAt)
+	return
+}
+
+func (category *Category) Delete() (err error) {
+	statement := "DELETE FROM categories WHERE uuid = ?"
+	stmt, err := Db.Prepare(statement)
+	if err != nil {
+		fmt.Println("Error in models/category.go: Delete()")
+		return
+	} 
+	defer stmt.Close()
+	_, err = stmt.Exec(category.Uuid)
 	return
 }
 

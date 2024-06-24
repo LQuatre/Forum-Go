@@ -32,13 +32,10 @@ func session(writer http.ResponseWriter, request *http.Request) (sess models.Ses
 	cookie, err := request.Cookie("_cookie")
 	if err == nil {
 		sess = models.Session{Uuid: cookie.Value}
-		fmt.Println("Session UUID: ", sess.Uuid)
 		if ok, _ := sess.Check(); !ok {
 			err = errors.New("Invalid session")
-			fmt.Println("Invalid session")
 		}
 	}
-	fmt.Println("session : No session")
 	return
 }
 
@@ -55,6 +52,11 @@ func generateHTML(writer http.ResponseWriter, data interface{}, filenames ...str
 
 func Version() string {
 	return "0.1"
+}
+
+func success(args ...interface{}) {
+	logger.SetPrefix("SUCCESS ")
+	logger.Println(args...)
 }
 
 func info(args ...interface{}) {

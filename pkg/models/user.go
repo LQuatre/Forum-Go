@@ -152,6 +152,25 @@ func (user *User) CreateCategory(name string) (category Category, err error) {
 	return
 }
 
+func (user *User) CreateTopic(name, categoryuuid string) (topic Topic, err error) {
+	statement := "INSERT INTO topics (uuid, name, category_uuid, created_at) VALUES (?, ?, ?, ?)"
+	stmt, err := Db.Prepare(statement)
+	if err != nil {
+		return
+	}
+	defer stmt.Close()
+
+	uuid := createUUID()
+	_, err = stmt.Exec(uuid, name, categoryuuid, time.Now())
+	if err != nil {
+		return
+	}
+
+	stmt.QueryRow(uuid).Scan(&topic.Uuid, &topic.Name, &topic.CategoryUuId, &topic.CreatedAt)
+	return
+}
+
+
 func (user *User) CreatePost(thread *Thread, body string) (*Post, error) {
 	statement := "INSERT INTO posts (uuid, body, user_uuid, thread_uuid, created_at) VALUES (?, ?, ?, ?, ?)"
 	stmt, err := Db.Prepare(statement)
