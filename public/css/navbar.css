@@ -29,7 +29,7 @@ nav ul li a {
 }
 
 nav ul li a:hover, nav ul li.user-options a {
-    color: #DC5F00;
+    color: #007BFF;
 }
 
 .dropdown-content {
@@ -84,7 +84,7 @@ button[type="submit"], .button {
     width: 100%;
     padding: 10px;
     margin-top: 20px;
-    background-color: #DC5F00;
+    background-color: #007BFF;
     color: #FFFFFF;
     border-radius: 5px;
 }

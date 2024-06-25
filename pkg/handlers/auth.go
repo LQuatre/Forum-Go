@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
@@ -53,7 +52,6 @@ func Authenticate(writer http.ResponseWriter, request *http.Request) {
 			HttpOnly: true,
 		}
 
-		fmt.Println("Session UUID: ", session.Uuid)
 		success("Authenticated user: ", user.Email)
 		http.SetCookie(writer, &cookie)
 		http.Redirect(writer, request, "/", 302)

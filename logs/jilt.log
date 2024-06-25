@@ -1,0 +1,2 @@
+ERROR 2024/06/24 14:49:28 helper.go:67: sql: no rows in result set Cannot find email
+ERROR 2024/06/24 14:49:30 helper.go:67: sql: no rows in result set Cannot find email

@@ -1,44 +1,41 @@
 {{ define "navbar" }}
 
 <nav>
-    <link rel="stylesheet" type="text/css" href="/public/css/index.css">
-    <ul>
-        <li><a href="/categories">Categories</a></li>
-        <li><a href="/public/template/create.html">Create Post</a></li>
-        <li><a href="/public/template/support.html">Support</a></li>
-        <li class="user-options">
-            <a href="#">Profile <span></span></a>
-            <div class="dropdown-content">
-                <a href="/logout" onclick="showLogin()">Logout</a>
-            </div>
-        </li>
-    </ul>
+  <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/help">Support</a></li>
+    <li class="user-options">
+      <a href="#">Profile <span></span></a>
+      <div class="dropdown-content">
+        <a href="/logout" onclick="showLogin()">Logout</a>
+      </div>
+    </li>
+  </ul>
 </nav>
 <div id="loginForm" class="form-hidden">
-    <h2>Login</h2>
-    <form action="/login" method="POST">
-        <input type="text" placeholder="Username" name="username" required>
-        <input type="password" placeholder="Password" name="password" required>
-        <button type="submit" class="button">Login</button>
-    </form>
+  <h2>Login</h2>
+  <form action="/login" method="POST">
+    <input type="text" placeholder="Username" name="username" required />
+    <input type="password" placeholder="Password" name="password" required />
+    <button type="submit" class="button">Login</button>
+  </form>
 </div>
 
 <div id="createAccountForm" class="form-hidden">
-    <h2>Create Account</h2>
-    <form action="/create-profile" method="POST">
-        <input type="text" placeholder="Username" name="username" required>
-        <input type="email" placeholder="Email" name="email" required>
-        <input type="password" placeholder="Password" name="password" required>
-        <button type="submit" class="button">Create Profile</button>
-    </form>
+  <h2>Create Account</h2>
+  <form action="/create-profile" method="POST">
+    <input type="text" placeholder="Username" name="username" required />
+    <input type="email" placeholder="Email" name="email" required />
+    <input type="password" placeholder="Password" name="password" required />
+    <button type="submit" class="button">Create Profile</button>
+  </form>
 </div>
 
-<footer>
-    
-</footer>
+<footer></footer>
 
 <script>
-    src="/public/js/index"
+  src = "/public/js/index";
 </script>
 
 {{ end }}

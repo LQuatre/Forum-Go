@@ -23,14 +23,15 @@ header h1 {
 }
 
 main {
-  padding: 20px;
   display: flex;
   justify-content: center;
   /* align-items: center; */
   height: calc(100vh - 160px); /* Adjust for header and footer */
+  width: 100%;
 }
 
 footer {
+  position: absolute;
   background-color: #343a40;
   color: white;
   text-align: center;
@@ -81,6 +82,7 @@ nav ul li a {
 nav ul li a:hover,
 nav ul li.user-options a {
   color: #ffd700;
+    color: #007BFF;
 }
 
 .dropdown-content {
@@ -228,18 +230,6 @@ form button:hover {
 }
 
 #login button[type="submit"],
-.button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background-color: #007bff;
-  color: #ffffff;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease-in-out;
-}
 
 #login button[type="submit"]:hover,
 .button:hover {
@@ -284,3 +274,105 @@ form button:hover {
 #login .back button:hover {
   background-color: #5a6268;
 }
+
+/* Style for social login buttons */
+#login .social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#login .social-login button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+#login .social-login button img {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+#login #facebook-login {
+    color: #3b5998;
+    border-color: #3b5998;
+}
+
+#login #facebook-login:hover {
+    background-color: #3b5998;
+    color: #fff;
+}
+
+#login #gmail-login {
+    color: #db4437;
+    border-color: #db4437;
+}
+
+#login #gmail-login:hover {
+    background-color: #db4437;
+    color: #fff;
+}
+
+#login #discord-login {
+    color: #7289da;
+    border-color: #7289da;
+}
+
+#login #discord-login:hover {
+    background-color: #7289da;
+    color: #fff;
+}
+.parent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .child {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    border-radius: 50%;
+    margin: 0 5px;
+  }
+  
+  .child:hover {
+    background-color: white;
+    background-position: -100px 100px, -100px 100px;
+    transform: rotate3d(0.5, 1, 0, 30deg);
+    transform: perspective(180px) rotateX(60deg) translateY(2px);
+    box-shadow: 0px 10px 10px rgb(1, 49, 182);
+  }
+  
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+  }
+  
+  .button:hover {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg) translateY(2px);
+    border-radius: 50%;
+  }
