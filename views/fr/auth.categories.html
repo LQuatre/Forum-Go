@@ -1,7 +1,11 @@
-{{ define "categories" }}
+{{ define "content" }}
 
 <div class="categories-container">
   <!-- for the admins -->
+  <form action="/categories/create" method="POST">
+    <input type="text" placeholder="Name" name="name" required />
+    <button type="submit" class="button">Create Category</button>
+  </form>
 
   {{ range . }}
   <div class="category">

@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"jilt.com/m/pkg/models"
@@ -32,13 +31,12 @@ func CreateThread(writer http.ResponseWriter, request *http.Request) {
         if err != nil {
             danger(err, "Cannot get user from session")
         }
-        topicid, title := request.PostFormValue("topic"), request.PostFormValue("title")
-        topicID, err := strconv.Atoi(topicid)
+        topicuuid, name := request.PostFormValue("topic-uuid"), request.PostFormValue("name")
         if err != nil {
-            danger(err, "Invalid topic ID")
+            danger(err, "Invalid topic UUID")
             return
         }
-        if _, err := user.CreateThread(topicID, title); err != nil {
+        if _, err := user.CreateThread(topicuuid, name); err != nil {
             danger(err, "Cannot create thread")
         }
         http.Redirect(writer, request, "/", 302)
@@ -48,7 +46,7 @@ func CreateThread(writer http.ResponseWriter, request *http.Request) {
 // GET /thread/read
 func ReadThread(writer http.ResponseWriter, request *http.Request) {
     vals := request.URL.Query()
-    uuid := vals.Get("id")
+    uuid := vals.Get("uuid")
     thread, err := models.ThreadByUUID(uuid)
     if err != nil {
         msg := localizer.MustLocalize(&i18n.LocalizeConfig{
@@ -56,7 +54,19 @@ func ReadThread(writer http.ResponseWriter, request *http.Request) {
         })
         errorMessage(writer, request, msg)
     } else {
-        _, err := session(writer, request)
+        comments, err := models.GetCommentsByThreadUUID(uuid)
+        if err != nil {
+            danger(err, "Cannot get comments")
+        }
+        thread.Comments = comments
+        for i, _ := range comments {
+            user, err := models.UserByUUID(comments[i].UserUuId)
+            if err != nil {
+                danger(err, "Cannot get user")
+            }
+            comments[i].Author = user
+        }
+        _, err = session(writer, request)
         if err != nil {
             generateHTML(writer, &thread, "layout", "navbar", "thread")
         } else {

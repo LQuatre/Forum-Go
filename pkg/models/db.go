@@ -28,12 +28,6 @@ func init() {
 		log.Fatalf("Cannot query database: %v\n", err)
 	}
 	defer rows.Close()
-	fmt.Println("Tables in database:")
-	for rows.Next() {
-		var name string
-		rows.Scan(&name)
-		fmt.Println(name)
-	}
 }
 
 // create a random UUID with from RFC 4122

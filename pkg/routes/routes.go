@@ -74,8 +74,8 @@ var webRoutes = WebRoutes{
 	{
 		"postThread",
 		"POST",
-		"/thread/post",
-		handlers.PostThread,
+		"/thread/comment",
+		handlers.CommentThread,
 	},
 	{
 		"Category",
@@ -96,10 +96,46 @@ var webRoutes = WebRoutes{
 		handlers.CreateCategory,
 	},
 	{
+		"deleteCategory",
+		"GET",
+		"/categories/delete",
+		handlers.DeleteCategory,
+	},
+	{
 		"goCategory",
 		"GET",
 		"/categories/category",
 		handlers.GoCategory,
+	},
+	{
+		"Topics",
+		"GET",
+		"/topics",
+		handlers.Topics,
+	},
+	{
+		"newTopic",
+		"GET",
+		"/topics/new",
+		handlers.NewTopic,
+	},
+	{
+		"createTopic",
+		"POST",
+		"/topics/create",
+		handlers.CreateTopic,
+	},
+	{
+		"deleteTopic",
+		"GET",
+		"/topics/delete",
+		handlers.DeleteTopic,
+	},
+	{
+		"goTopic",
+		"GET",
+		"/topics/topic",
+		handlers.GoTopic,
 	},
 	{
 		"error",

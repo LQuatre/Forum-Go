@@ -1,13 +1,16 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 type Thread struct {
 	Uuid      string
 	Title     string
-	TopicUuId int
-	UserUuId  int
-	CreatedAt time.Time
+	TopicUuId string
+	UserUuId  string
+	CreatedAt time.Time	
+	Comments []Comment
 }
 
 // format the CreatedAt date to display nicely on the screen
@@ -31,31 +34,31 @@ func (thread *Thread) NumReplies() (count int) {
 }
 
 // get posts to a thread
-func (thread *Thread) Posts() (posts []Post, err error) {
+func (thread *Thread) Posts() (comments []Comment, err error) {
 	rows, err := Db.Query("SELECT uuid, body, user_id, thread_id, created_at FROM posts WHERE thread_uuid = ?", thread.Uuid)
 	if err != nil {
 		return
 	}
 	for rows.Next() {
-		post := Post{}
-		if err = rows.Scan(&post.Uuid, &post.Body, &post.UserUuId, &post.ThreadUuId, &post.CreatedAt); err != nil {
+		comment := Comment{}
+		if err = rows.Scan(&comment.Uuid, &comment.Body, &comment.UserUuId, &comment.ThreadUuId, &comment.CreatedAt); err != nil {
 			return
 		}
-		posts = append(posts, post)
+		comments = append(comments, comment)
 	}
 	rows.Close()
 	return
 }
 
 // Get all threads in a topic
-func ThreadsByTopic(topicUuId int) (threads []Thread, err error) {
-	rows, err := Db.Query("SELECT uuid, title, topic_uuid, user_id, created_at FROM threads WHERE topic_uuid = ? ORDER BY created_at DESC", topicUuId)
+func ThreadsByTopicUUID(topicUuId string) (threads []Thread, err error) {
+	rows, err := Db.Query("SELECT uuid, topic_uuid, user_uuid, title, created_at FROM threads WHERE topic_uuid = ? ORDER BY created_at DESC", topicUuId)
 	if err != nil {
 		return
 	}
 	for rows.Next() {
 		thread := Thread{}
-		if err = rows.Scan(&thread.Uuid, &thread.Title, &thread.TopicUuId, &thread.UserUuId, &thread.CreatedAt); err != nil {
+		if err = rows.Scan(&thread.Uuid, &thread.TopicUuId, &thread.UserUuId, &thread.Title, &thread.CreatedAt); err != nil {
 			return
 		}
 		threads = append(threads, thread)
@@ -67,8 +70,8 @@ func ThreadsByTopic(topicUuId int) (threads []Thread, err error) {
 // Get a thread by the UUID
 func ThreadByUUID(uuid string) (thread Thread, err error) {
 	thread = Thread{}
-	err = Db.QueryRow("SELECT uuid, title, topic_id, user_id, created_at FROM threads WHERE uuid = ?", uuid).
-		Scan(&thread.Uuid, &thread.Title, &thread.TopicUuId, &thread.UserUuId, &thread.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, topic_uuid, user_uuid, title, created_at FROM threads WHERE uuid = ?", uuid).
+		Scan(&thread.Uuid, &thread.TopicUuId, &thread.UserUuId, &thread.Title, &thread.CreatedAt)
 	return
 }
 

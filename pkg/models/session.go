@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -17,12 +16,10 @@ func (session *Session) Check() (valid bool, err error) {
 	err = Db.QueryRow("SELECT uuid, email, user_uuid, created_at FROM sessions WHERE uuid = ?", session.Uuid).
 		Scan(&session.Uuid, &session.Email, &session.UserUuId, &session.CreatedAt)
 	if err != nil {
-		fmt.Printf("error checking session %v\n", err)
 		valid = false
 		return
 	}
 	if session.UserUuId != "" {
-		fmt.Printf("session.UserUuId %v\n", session.UserUuId)
 		valid = true
 	}
 	return

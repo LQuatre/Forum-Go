@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
@@ -31,6 +30,7 @@ func SignupAccount(writer http.ResponseWriter, request *http.Request) {
 	if err := user.Create(); err != nil {
 		danger(err, "Cannot create user")
 	}
+	success("User created: ", user.Name)
 	http.Redirect(writer, request, "/login", 302)
 }
 
@@ -52,7 +52,7 @@ func Authenticate(writer http.ResponseWriter, request *http.Request) {
 			HttpOnly: true,
 		}
 
-		fmt.Println("Session UUID: ", session.Uuid)
+		success("Authenticated user: ", user.Email)
 		http.SetCookie(writer, &cookie)
 		http.Redirect(writer, request, "/", 302)
 	} else {

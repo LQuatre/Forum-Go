@@ -8,8 +8,6 @@
   },
   "Db": {
     "Driver": "sqlite3",
-    "Address": "./jilt.db",
-    "Database": "",
-    "Password": ""
+    "Address": "../db/jilt.db"
   }
 }
