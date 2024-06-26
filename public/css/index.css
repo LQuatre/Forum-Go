@@ -462,6 +462,25 @@ form button:hover {
     height: 220px;
     opacity: 1;
   }
-  h2{
-    ;
+  main {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
   }
+  
+  #index {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+  
