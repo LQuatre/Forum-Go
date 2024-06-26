@@ -230,18 +230,6 @@ form button:hover {
 }
 
 #login button[type="submit"],
-.button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background-color: #007bff;
-  color: #ffffff;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease-in-out;
-}
 
 #login button[type="submit"]:hover,
 .button:hover {
@@ -348,7 +336,6 @@ form button:hover {
 }
 .parent {
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

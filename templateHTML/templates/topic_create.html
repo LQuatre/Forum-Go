@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page des Topics - Jilt</title>
+    <link rel="stylesheet" href="/styles/topic.css">
+</head>
+<body>
+    <main>
+        <section class="topics">
+            <h1>Tous les Topics</h1>
+            <ul>
+                <li>
+                    <h2><a href="#">Titre du premier topic</a></h2>
+                    <p>Nombre de réponses | Date du dernier message | Auteur du dernier message</p>
+                </li>
+                <li>
+                    <h2><a href="#">Titre du deuxième topic</a></h2>
+                    <p>Nombre de réponses | Date du dernier message | Auteur du dernier message</p>
+                </li>
+            </ul>
+            <button id="btnNewTopic">Créer un nouveau topic</button>
+            <div id="newTopicForm" style="display: none;">
+                <form action="/creer-topic" method="post">
+                    <label for="titreTopic">Titre du topic :</label><br>
+                    <input type="text" id="titreTopic" name="titreTopic"><br>
+                    <input type="submit" value="Créer">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script JavaScript séparé -->
+    <script src="/scripts/topics.js"></script>
+</body>
+</html>
