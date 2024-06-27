@@ -11,9 +11,6 @@ import (
 func StartWebServer() {
 	r := NewRouter()
 
-	assets := http.FileServer(http.Dir(ViperConfig.App.Static))
-	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", assets))
-
 	http.Handle("/", r)
 
 	log.Println("Starting HTTP service at http://" + ViperConfig.App.Address)

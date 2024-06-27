@@ -1,0 +1,120 @@
+#profile {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#profile h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#profile #profile ul {
+  list-style-type: none;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile ul li {
+  margin-bottom: 50px;
+  font-size: 16px;
+}
+
+#profile #profile ul li span {
+  font-weight: bold;
+  color: #555;
+}
+
+#profile #profile-picture {
+  display: block;
+  max-width: 30%;
+  height: auto;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+#profile button#edit-profile {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+#profile button#edit-profile:hover {
+  background-color: #333;
+}
+
+#editprofile body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#editprofile h2,
+h3 {
+  color: #333;
+}
+
+#editprofile div {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#editprofile form {
+  margin: 20px 0;
+}
+
+#editprofile label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+#editprofile input[type="password"],
+input[type="text"],
+input[type="email"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#editprofile button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#editprofile button:hover {
+  background-color: #333;
+}

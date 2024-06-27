@@ -1,0 +1,40 @@
+{{ define "content" }}
+
+<section id="editprofile">
+  <div>
+    <h2>Paramètres du compte</h2>
+
+    <h3>Changer le mot de passe</h3>
+    <form>
+      <label for="current-password">Mot de passe actuel:</label>
+      <input type="password" id="current-password" name="current-password" />
+
+      <label for="new-password">Nouveau mot de passe:</label>
+      <input type="password" id="new-password" name="new-password" />
+
+      <label for="confirm-password">Confirmer le nouveau mot de passe:</label>
+      <input type="password" id="confirm-password" name="confirm-password" />
+
+      <button type="submit">Changer le mot de passe</button>
+    </form>
+
+    <h3>Changer le pseudo</h3>
+    <form>
+      <label for="new-username">Nouveau pseudo:</label>
+      <input type="text" id="new-username" name="new-username" />
+
+      <button type="submit">Changer le pseudo</button>
+    </form>
+
+    <h3>Changer la photo de profil</h3>
+    <form>
+      <label for="new-profile-photo">Nouvelle photo de profil:</label>
+      <input type="file" id="new-profile-photo" name="new-profile-photo" />
+
+      <button type="submit">Changer la photo de profil</button>
+    </form>
+  </div>
+  <script src="/script/auth_user_param.js"></script>
+</section>
+
+{{ end }}

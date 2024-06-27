@@ -1,0 +1,108 @@
+{{ define "content" }}
+
+<main>
+  <section id="admin">
+    <div class="admin">
+      <h1>Users</h1>
+
+      {{ range .Users }}
+
+      <div class="category">
+        <div class="uuid">{{ .Uuid }}</div>
+        <div class="name">{{ .Name }}</div>
+        <div class="email">{{ .Email }}</div>
+        <div class="is-admin">{{ .IsAdmin }}</div>
+        <form action="/admin/update" method="POST">
+          <input type="hidden" name="admin-uuid" value="{{ .Uuid }}" />
+          <input type="text" name="name" placeholder="Name" />
+          <input type="email" name="email" placeholder="Email" />
+          <button type="submit">update</button>
+        </form>
+
+        <div class="sessions">
+          <h1>Sessions</h1>
+          {{ $currentUser := .Uuid }} {{ range $.Sessions }}
+
+          <p>{{ .UserUuId }}</p>
+
+          {{ if eq .UserUuId $currentUser }}
+          <div class="session">
+            <p>Session ID: {{ .Uuid }}</p>
+            <p>Email: {{ .Email }}</p>
+            <p>Created At: {{ .CreatedAt }}</p>
+          </div>
+          <form action="/session/close" method="POST">
+            <input type="hidden" name="session-uuid" value="{{ .Uuid }}" />
+            <button type="submit">Close Session</button>
+          </form>
+          {{ end }} {{ end }}
+        </div>
+
+        <form action="/admin/update2" method="POST">
+          <input type="hidden" name="admin-uuid" value="{{ .Uuid }}" />
+          <input type="hidden" name="is_admin" value="{{ not .IsAdmin }}" />
+          <button type="submit">Toggle Admin</button>
+        </form>
+      </div>
+
+      {{ end }}
+
+      <h1>Categories</h1>
+
+      {{ range .Categories }}
+
+      <div class="category">
+        <h1>{{ .Name }}</h1>
+        <p>
+          <a href="/categories/category?uuid={{ .Uuid }}" class="category-a"
+            >View Category</a
+          >
+        </p>
+      </div>
+
+      {{ end }}
+
+      <div class="create-cat">
+        <form action="/categories/create" method="POST">
+          <input type="text" placeholder="Name" name="name" required />
+          <button type="submit" class="button">Create Category</button>
+        </form>
+      </div>
+
+      <h1>Topics</h1>
+
+      {{ range .Topics }}
+
+      <div class="topic">
+        <h2><a href="/topics/topic?uuid={{ .Uuid }}">{{ .Title }}</a></h2>
+        <p>{{ .CreatedAt }}</p>
+      </div>
+
+      {{ end }}
+
+      <h1>Threads</h1>
+
+      {{ range .Threads }}
+
+      <div class="thread">
+        <h2><a href="/threads/thread?uuid={{ .Uuid }}">{{ .Title }}</a></h2>
+        <p>{{ .CreatedAt }}</p>
+      </div>
+
+      {{ end }}
+
+      <h1>Comments</h1>
+
+      {{ range .Comments }}
+
+      <div class="comment">
+        <h3>{{ .Author.Name }}</h3>
+        <p>{{ .Body }}</p>
+        <p>{{ .CreatedAt }}</p>
+      </div>
+
+      {{ end }}
+    </div>
+  </section>
+</main>
+{{ end }}

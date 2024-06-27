@@ -39,6 +39,15 @@ func session(writer http.ResponseWriter, request *http.Request) (sess models.Ses
 	return
 }
 
+func CloseSession(writer http.ResponseWriter, request *http.Request) {
+	cookie, err := request.Cookie("_cookie")
+	if err == nil {
+		sess := models.Session{Uuid: cookie.Value} 
+		sess.DeleteByUUID()
+	}
+	http.Redirect(writer, request, "/", 302)
+}
+
 func generateHTML(writer http.ResponseWriter, data interface{}, filenames ...string) {
 	var files []string
 	for _, file := range filenames {

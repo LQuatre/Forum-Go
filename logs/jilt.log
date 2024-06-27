@@ -1,2 +1,88 @@
 ERROR 2024/06/24 14:49:28 helper.go:67: sql: no rows in result set Cannot find email
 ERROR 2024/06/24 14:49:30 helper.go:67: sql: no rows in result set Cannot find email
+SUCCESS 2024/06/26 15:34:37 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+WARNING 2024/06/26 15:35:28 helper.go:74: <nil> Failed to get cookie
+ERROR 2024/06/26 15:36:00 helper.go:69: Email already used Cannot create user
+SUCCESS 2024/06/26 15:36:00 helper.go:59: User created:  l4.
+SUCCESS 2024/06/26 15:36:46 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+SUCCESS 2024/06/26 16:17:13 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+WARNING 2024/06/26 16:20:01 helper.go:74: <nil> Failed to get cookie
+ERROR 2024/06/26 16:40:36 helper.go:69: sql: no rows in result set Cannot find email
+ERROR 2024/06/26 16:40:37 helper.go:69: sql: no rows in result set Cannot find email
+ERROR 2024/06/26 16:40:59 helper.go:69: sql: no rows in result set Cannot find email
+ERROR 2024/06/26 16:42:44 helper.go:69: sql: no rows in result set Cannot find email
+SUCCESS 2024/06/26 16:45:24 helper.go:59: User created:  
+SUCCESS 2024/06/26 16:45:37 helper.go:59: Authenticated user:  
+WARNING 2024/06/26 16:49:00 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/06/26 16:49:08 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+WARNING 2024/06/26 17:05:17 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/06/26 17:14:22 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+WARNING 2024/06/26 17:15:13 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/06/26 17:15:34 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+WARNING 2024/06/26 17:22:39 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/06/26 17:28:47 helper.go:59: Authenticated user:  
+WARNING 2024/06/26 17:28:56 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/06/27 14:56:44 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+SUCCESS 2024/06/27 15:02:19 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+SUCCESS 2024/06/27 15:23:17 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+WARNING 2024/06/27 15:41:24 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/06/27 15:42:14 helper.go:59: Authenticated user:  lucas.diot6600@gmail.com
+ERROR 2024/06/27 16:20:59 helper.go:69: sql: expected 3 arguments, got 2 Cannot update admin info
+SUCCESS 2024/06/27 16:20:59 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:22:39 helper.go:69: sql: expected 3 arguments, got 2 Cannot update admin info
+SUCCESS 2024/06/27 16:22:39 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:23:30 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:24:29 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:26:50 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:26:58 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:27:53 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:28:45 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:29:19 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:32:08 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:32:08 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:32:56 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:33:16 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:33:17 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:33:18 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:33:18 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:33:41 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:38:18 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:38:18 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:38:28 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:38:28 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:41:37 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:41:45 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:45 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:45 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:46 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:46 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:46 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:46 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:47 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:47 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:47 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:47 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:47 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:47 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:47 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:47 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:47 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:47 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:48 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:48 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:48 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:48 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:48 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:48 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:48 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:48 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:49 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:49 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:49 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:49 helper.go:59: Admin info updated Admin info updated successfully
+ERROR 2024/06/27 16:41:53 helper.go:69: sql: no rows in result set Cannot get admin info
+SUCCESS 2024/06/27 16:41:53 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:43:04 helper.go:59: Admin info updated Admin info updated successfully
+SUCCESS 2024/06/27 16:47:21 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+SUCCESS 2024/06/27 17:13:03 helper.go:68: Authenticated user:  unmecpasfort@gmail.com
+SUCCESS 2024/06/27 17:13:17 helper.go:68: Authenticated user:  unmecpasfort@gmail.com
