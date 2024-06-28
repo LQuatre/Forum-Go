@@ -1,0 +1,167 @@
+/* Styles généraux pour le corps de la page */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.right .a a {
+    padding: 0 20px;
+    color: #f2f2f2;
+    text-decoration: white;
+    border-radius: 15px;
+    display: auto;
+}
+
+.right .a a:hover {
+    padding: 10px 20px;
+    background-color: #ddd;
+    color: rgb(11, 10, 10);
+}
+
+.left a {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.left a:hover {
+    color: rgb(11, 10, 10);
+}
+
+.navbar-logo img {
+    height: 70px; /* Ajustez la hauteur du logo selon vos besoins */
+    overflow: hidden;
+}
+
+/* Styles pour le menu déroulant du profil utilisateur */
+.profile-menu {
+    position: relative;
+}
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin: 10px;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-icon img {
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px; /* Ajustez la position du menu déroulant selon votre mise en page */
+    right: 0; /* Assurez-vous que le menu est aligné à droite sous l'icône du profil */
+    background-color: rgb(52, 48, 48);
+    box-shadow: 0 8px 16px rgba(207, 195, 195, 0.2);
+    border-radius: 10px;
+    z-index: 1; 
+}
+
+.dropdown-menu::before {
+    content: "";
+    position: absolute; 
+    top: -10px; /* Place the arrow above the dropdown menu */
+    right: 20px; /* Adjust this value to position the arrow */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgb(52, 48, 48) transparent;
+}
+
+.profile-icon:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu {
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    color: rgb(205, 205, 205);
+    text-decoration: none;
+    display: block;
+    padding: 20px 40px; 
+    margin: 0;
+    width: 80%;
+}
+
+.dropdown-menu a:hover {
+    background-color: #ddd;
+}
+
+
+.main-content {
+    padding: 20px;
+}
+
+.main-content h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Styles pour les discussions */
+.discussion {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.discussion h3 {
+    margin-top: 0;
+}
+
+.custom-shape-divider-bottom-1719406001 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1719406001 svg {
+    position: relative;
+    display: block;
+    width: calc(133% + 1.3px);
+    height: 246px;
+}
+
+.custom-shape-divider-bottom-1719406001 .shape-fill {
+    fill: #4A4A4A;
+}

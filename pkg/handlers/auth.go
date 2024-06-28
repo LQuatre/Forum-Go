@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
@@ -15,6 +14,36 @@ func Login(writer http.ResponseWriter, request *http.Request) {
 // GET /signup
 func Signup(writer http.ResponseWriter, request *http.Request) {
 	generateHTML(writer, nil, "auth.layout", "navbar", "signup")
+}
+
+func Profile(writer http.ResponseWriter, request *http.Request) {
+	sess, err := session(writer, request)
+	if err != nil {
+		http.Redirect(writer, request, "/login", 302)
+	} else {
+		user, err := sess.User()
+		if err != nil {
+			danger(err, "Cannot get user from session")
+		}
+		if user.IsAdmin {
+			generateHTML(writer, user, "auth.layout", "admin.navbar", "auth.profile")
+		} else {
+			generateHTML(writer, user, "auth.layout", "auth.navbar", "auth.profile")
+		}
+	}
+}
+
+func EditProfile(writer http.ResponseWriter, request *http.Request) {
+	sess, err := session(writer, request)
+	if err != nil {
+		http.Redirect(writer, request, "/login", 302)
+	} else {
+		user, err := sess.User()
+		if err != nil {
+			danger(err, "Cannot get user from session")
+		}
+		generateHTML(writer, user, "auth.layout", "auth.navbar", "auth.edit_profile")
+	}
 }
 
 // POST /signup
@@ -53,7 +82,6 @@ func Authenticate(writer http.ResponseWriter, request *http.Request) {
 			HttpOnly: true,
 		}
 
-		fmt.Println("Session UUID: ", session.Uuid)
 		success("Authenticated user: ", user.Email)
 		http.SetCookie(writer, &cookie)
 		http.Redirect(writer, request, "/", 302)

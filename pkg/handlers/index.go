@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
@@ -18,15 +17,22 @@ func Index(writer http.ResponseWriter, request *http.Request) {
 		}
 	}
 
-	fmt.Println(categories)
 	if err != nil {
 		http.Redirect(writer, request, "/err?msg=Cannot get topics", http.StatusTemporaryRedirect)
 	} else {
-		_, err := session(writer, request)
+		sess, err := session(writer, request)
 		if err != nil {
 			generateHTML(writer, nil, "layout", "navbar", "index")
 		} else {
-			generateHTML(writer, categories, "layout", "auth.navbar", "auth.index")
+			user, err := sess.User()
+			if err != nil {
+				danger(err, "Cannot get user from session")
+			}
+			if user.IsAdmin {
+				generateHTML(writer, &categories, "layout", "admin.navbar", "auth.index")
+			} else {
+				generateHTML(writer, &categories, "layout", "auth.navbar", "auth.index")
+			}
 		}
 	}
 }
