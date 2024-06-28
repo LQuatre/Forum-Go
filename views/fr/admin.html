@@ -21,11 +21,8 @@
 
         <div class="sessions">
           <h1>Sessions</h1>
-          {{ $currentUser := .Uuid }} {{ range $.Sessions }}
-
-          <p>{{ .UserUuId }}</p>
-
-          {{ if eq .UserUuId $currentUser }}
+          {{ $currentUser := .Uuid }} {{ range $.Sessions }} {{ if eq .UserUuId
+          $currentUser }}
           <div class="session">
             <p>Session ID: {{ .Uuid }}</p>
             <p>Email: {{ .Email }}</p>
@@ -40,7 +37,7 @@
 
         <form action="/admin/update2" method="POST">
           <input type="hidden" name="admin-uuid" value="{{ .Uuid }}" />
-          <input type="hidden" name="is_admin" value="{{ not .IsAdmin }}" />
+          <input type="hidden" name="is_admin" value="{{ .IsAdmin }}" />
           <button type="submit">Toggle Admin</button>
         </form>
       </div>
@@ -56,6 +53,11 @@
         <p>
           <a href="/categories/category?uuid={{ .Uuid }}" class="category-a"
             >View Category</a
+          >
+        </p>
+        <p>
+          <a href="/categories/delete?uuid={{ .Uuid }}" class="category-a"
+            >Delete Category</a
           >
         </p>
       </div>

@@ -25,7 +25,11 @@ func Profile(writer http.ResponseWriter, request *http.Request) {
 		if err != nil {
 			danger(err, "Cannot get user from session")
 		}
-		generateHTML(writer, user, "auth.layout", "auth.navbar", "auth.profile")
+		if user.IsAdmin {
+			generateHTML(writer, user, "auth.layout", "admin.navbar", "auth.profile")
+		} else {
+			generateHTML(writer, user, "auth.layout", "auth.navbar", "auth.profile")
+		}
 	}
 }
 

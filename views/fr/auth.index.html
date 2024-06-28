@@ -6,10 +6,7 @@
       <div class="categories-container">
         {{ range . }}
           <div class="category">
-            <h1>{{ .Name }}</h1>
-            <!-- <p>
-              <a href="/categories/category?uuid={{ .Uuid }}">View Category</a>
-            </p> -->
+            <h1><a href="/categories/category?uuid={{ .Uuid }}">{{ .Name }}</a></h1>
             <ul>
               {{ range .Topics }}
                 <li>

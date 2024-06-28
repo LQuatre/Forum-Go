@@ -1,6 +1,6 @@
 {
   "App": {
-    "Address": "127.0.0.1:8080",
+    "Address": "10.31.35.143:8080",
     "Static": "public",
     "Log": "logs",
     "Locale": "locales",

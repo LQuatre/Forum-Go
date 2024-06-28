@@ -1,15 +1,25 @@
 {{ define "content" }}
 
 <section id="profile">
-  <h1>Informations du compte utilisateur</h1>
-  <ul>
-    <li>Nom d'utilisateur : <span id="username">{{ .Name }}</span></li>
-    <li>Email : <span id="email">{{ .Email }}</span></li>
-    <li>
-      Image de profil :
-      <img id="profile-picture" src="/img/bonhomme.png" alt="Image de profil" />
-    </li>
-  </ul>
+  <div class="view">
+    <h1>Informations du compte utilisateur</h1>
+    <ul>
+      <li>Nom d'utilisateur : <span id="username">{{ .Name }}</span></li>
+      <li>Email : <span id="email">{{ .Email }}</span></li>
+      <li>
+        Image de profil :
+        <img
+          id="profile-picture"
+          src="/img/bonhomme.png"
+          alt="Image de profil"
+        />
+      </li>
+    </ul>
+
+    <button id="edit-profile" onclick="window.location.href='/edit_profile'">
+      Modifier le profil
+    </button>
+  </div>
 
   <div class="custom-shape-divider-bottom-1719406001">
     <svg
@@ -34,10 +44,6 @@
       ></path>
     </svg>
   </div>
-
-  <button id="edit-profile" onclick="window.location.href='/edit_profile'">
-    Modifier le profil
-  </button>
   <script src="/script/auth_user_page.js"></script>
 </section>
 

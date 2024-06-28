@@ -12,18 +12,25 @@ type Session struct {
 	isAdmin   bool
 }
 
+const SessionDuration = 10 * time.Minute // Durée de la session : 10 minutes
+
 // Check if session is valid in the database
 func (session *Session) Check() (valid bool, err error) {
-	err = Db.QueryRow("SELECT uuid, email, user_uuid, created_at, isAdmin FROM sessions WHERE uuid = ?", session.Uuid).
-		Scan(&session.Uuid, &session.Email, &session.UserUuId, &session.CreatedAt, &session.isAdmin)
-	if err != nil {
-		valid = false
-		return
-	}
-	if session.UserUuId != "" {
-		valid = true
-	}
-	return
+    err = Db.QueryRow("SELECT uuid, email, user_uuid, created_at, isAdmin FROM sessions WHERE uuid = ?", session.Uuid).
+        Scan(&session.Uuid, &session.Email, &session.UserUuId, &session.CreatedAt, &session.isAdmin)
+    if err != nil {
+        valid = false
+        return
+    }
+    // Vérifiez si la session a expiré
+    if time.Since(session.CreatedAt) > SessionDuration {
+        valid = false
+        return
+    }
+    if session.UserUuId != "" {
+        valid = true
+    }
+    return
 }
 
 // Delete session from database
@@ -68,4 +75,13 @@ func SessionDeleteAll() (err error) {
 	statement := "DELETE FROM sessions"
 	_, err = Db.Exec(statement)
 	return
+}
+
+
+// Delete expired sessions from database
+func DeleteExpiredSessions() (err error) {
+    statement := "DELETE FROM sessions WHERE created_at < ?"
+    cutoff := time.Now().Add(-SessionDuration)
+    _, err = Db.Exec(statement, cutoff)
+    return
 }

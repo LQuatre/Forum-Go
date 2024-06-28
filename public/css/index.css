@@ -30,13 +30,14 @@ body {
 }
 
 .custom-shape-divider-bottom-1719406001 {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
   transform: rotate(180deg);
+  z-index: -1;
 }
 
 .custom-shape-divider-bottom-1719406001 svg {

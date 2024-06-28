@@ -80,11 +80,25 @@ func AdminUpdate2(writer http.ResponseWriter, request *http.Request) {
 		if err != nil {
 			danger(err, "Cannot get admin info")
 		}
-		admin.IsAdmin = request.PostFormValue("is-admin") == "on"
+		admin.IsAdmin = !admin.IsAdmin
 		if err := admin.Update2(); err != nil {
 			danger(err, "Cannot update admin info")
 		}
 		success("Admin info updated", "Admin info updated successfully")
 		http.Redirect(writer, request, "/admin", 302)
 	}
+}
+
+func AdminCloseASession(writer http.ResponseWriter, request *http.Request) {
+	err := request.ParseForm()
+	if err != nil {
+		danger(err, "Cannot parse form")
+	}
+	session := models.Session{Uuid: request.PostFormValue("session-uuid")}
+	err = session.DeleteByUUID()
+	if err != nil {
+		danger(err, "Cannot delete session")
+	}
+	success("Session deleted", "Session deleted successfully")
+	http.Redirect(writer, request, "/admin", 302)
 }

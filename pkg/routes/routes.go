@@ -62,7 +62,7 @@ var webRoutes = WebRoutes{
 		"closeSession",
 		"POST",
 		"/session/close",
-		handlers.CloseSession,
+		handlers.AdminCloseASession,
 	},
 	{
 		"editProfile",
