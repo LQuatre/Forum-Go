@@ -1,3 +1,3 @@
 # Forum-Go
 
-A simple forum web application using Go and MySQL.
+A simple forum web application using Go and SQLite.
