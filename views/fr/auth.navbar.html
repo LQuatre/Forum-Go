@@ -1,41 +1,29 @@
 {{ define "navbar" }}
 
 <nav>
-  <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/help">Support</a></li>
-    <li class="user-options">
-      <a href="#">Profile <span></span></a>
-      <div class="dropdown-content">
-        <a href="/logout" onclick="showLogin()">Logout</a>
+  <div class="navbar">
+    <div class="right">
+      <a href="/" class="navbar-logo"
+        ><img src="/static/img/logoJILT.png" alt="Logo"
+      /></a>
+      <div class="a">
+        <a href="/">Accueil</a>
+        <a href="/about">À propos</a>
+        <a href="/help">Assistance</a>
       </div>
-    </li>
-  </ul>
+    </div>
+    <div class="left">
+      <div class="profile-menu">
+        <div class="profile-icon">
+          <img src="/static/img/bonhomme.png" alt="User Icon" />
+          <div class="dropdown-menu">
+            <a href="/profile">Profile</a>
+            <a href="/logout">Se déconnecter </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
-<div id="loginForm" class="form-hidden">
-  <h2>Login</h2>
-  <form action="/login" method="POST">
-    <input type="text" placeholder="Username" name="username" required />
-    <input type="password" placeholder="Password" name="password" required />
-    <button type="submit" class="button">Login</button>
-  </form>
-</div>
-
-<div id="createAccountForm" class="form-hidden">
-  <h2>Create Account</h2>
-  <form action="/create-profile" method="POST">
-    <input type="text" placeholder="Username" name="username" required />
-    <input type="email" placeholder="Email" name="email" required />
-    <input type="password" placeholder="Password" name="password" required />
-    <button type="submit" class="button">Create Profile</button>
-  </form>
-</div>
-
-<footer></footer>
-
-<script>
-  src = "/public/js/index";
-</script>
 
 {{ end }}

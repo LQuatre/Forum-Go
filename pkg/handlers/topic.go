@@ -81,11 +81,19 @@ func GoTopic(writer http.ResponseWriter, request *http.Request) {
 			http.Redirect(writer, request, "/err?msg=Cannot get threads", 302)
 		}
 		topic.Threads = threads
-		_, err = session(writer, request)
+		sess, err := session(writer, request)
 		if err != nil {
 			http.Redirect(writer, request, "/login", 302)
 		} else {
-			generateHTML(writer, &topic, "layout", "auth.navbar", "auth.topic")
+			user, err := sess.User()
+			if err != nil {
+				danger(err, "Cannot get user from session")
+			}
+			if user.IsAdmin {
+				generateHTML(writer, &topic, "layout", "admin.navbar", "auth.topic")
+			} else {
+				generateHTML(writer, &topic, "layout", "auth.navbar", "auth.topic")
+			}
 		}
 	}
 }

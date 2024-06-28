@@ -3,9 +3,16 @@
 <div class="thread-container">
   <div class="thread">
     <h2>{{ .Title }}</h2>
-    <p>{{ .CreatedAt }}</p>
   </div>
   <div class="comments">
+    {{ range .Comments }}
+    <div class="comment">
+      <h3>{{ .Author.Name }}</h3>
+      <p>{{ .Body }}</p>
+      <p>{{ .CreatedAt }}</p>
+    </div>
+    {{ end }}
+
     <form action="/thread/comment" method="POST">
       <input type="hidden" name="thread_uuid" value="{{ .Uuid }}" />
       <textarea
@@ -16,14 +23,6 @@
       ></textarea>
       <button type="submit" class="button">Comment</button>
     </form>
-
-    {{ range .Comments }}
-    <div class="comment">
-      <h3>{{ .Author.Name }}</h3>
-      <p>{{ .Body }}</p>
-      <p>{{ .CreatedAt }}</p>
-    </div>
-    {{ end }}
   </div>
 </div>
 
