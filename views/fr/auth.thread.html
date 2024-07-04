@@ -1,0 +1,29 @@
+{{ define "content" }}
+
+<div class="thread-container">
+  <div class="thread">
+    <h2>{{ .Title }}</h2>
+  </div>
+  <div class="comments">
+    {{ range .Comments }}
+    <div class="comment">
+      <h3>{{ .Author.Name }}</h3>
+      <p>{{ .Body }}</p>
+      <p>{{ .CreatedAt }}</p>
+    </div>
+    {{ end }}
+
+    <form action="/thread/comment" method="POST">
+      <input type="hidden" name="thread_uuid" value="{{ .Uuid }}" />
+      <textarea
+        type="text"
+        name="content"
+        placeholder="Comment"
+        required
+      ></textarea>
+      <button type="submit" class="button">Comment</button>
+    </form>
+  </div>
+</div>
+
+{{ end }}

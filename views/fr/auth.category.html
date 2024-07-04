@@ -2,35 +2,37 @@
 
 <main>
   <section id="category">
-    <h2>Category</h2>
+    <div class="category">
+      <h2>{{ .Name }}</h2>
 
-    <form role="form" action="/topics/create" method="POST">
-      <label for="Name">Title:</label>
-      <input type="text" id="name" name="name" />
-      <input type="hidden" name="cat-uuid" value="{{ .Uuid }}" />
-      <button type="submit">Create</button>
-    </form>
-
-    {{ range .Topics }}
-
-    <div class="topic">
-      <a href="/topics/topic?uuid={{ .Uuid }}" class="topic-a">{{ .Name }}</a>
-      <p>{{ .CreatedAt }}</p>
-    </div>
-
-    {{ end }}
-
-    <!-- for the admins -->
-    <!-- <form role="form" action="/categories/update" method="POST">
+      <form role="form" action="/topics/create" method="POST">
+        <label for="Name">Title:</label>
+        <input type="text" id="name" name="name" />
         <input type="hidden" name="cat-uuid" value="{{ .Uuid }}" />
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ .Name }}" />
-        <button type="submit">Update</button>
+        <button type="submit">Create</button>
       </form>
-      <a href="/categories/delete?uuid={{ .Uuid }}" class="delete">Delete</a>
-      <div class="back">
-        <button onclick="window.location.href='/categories'">Back</button>
-      </div> -->
-  </section>
+  
+      <ul>
+        {{ range .Topics }}
+        <li>
+          <h3><a href="/topics/topic?uuid={{ .Uuid }}">{{ .Name }}</a></h3>
+          <p>{{ .CreatedAt }}</p>
+        </li>
+        {{ end }}
+      </ul>
+  
+      <!-- for the admins -->
+      <!-- <form role="form" action="/categories/update" method="POST">
+          <input type="hidden" name="cat-uuid" value="{{ .Uuid }}" />
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" value="{{ .Name }}" />
+          <button type="submit">Update</button>
+        </form>
+        <a href="/categories/delete?uuid={{ .Uuid }}" class="delete">Delete</a>
+        <div class="back">
+          <button onclick="window.location.href='/categories'">Back</button>
+        </div> -->
+    </section>
+    </div>
 </main>
 {{ end }}

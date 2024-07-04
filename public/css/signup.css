@@ -1,0 +1,196 @@
+#signup {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #222;
+}
+
+#signup form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+  gap: 20px;
+  user-select: none;
+}
+
+#signup label {
+  font-size: 1em;
+  user-select: none;
+}
+
+#signup button {
+  color: white;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#signup input[type="text"],
+#signup input[type="password"],
+#signup input[type="email"],
+#signup a {
+  width: 95%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  background-color: #fff;
+  color: #222;
+}
+
+#signup button[type="submit"],
+#signup button[type="submit"]:hover,
+.button:hover {
+  background-color: #0056b3;
+}
+
+#signup .error {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#signup p {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+#signup a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#signup a:hover {
+  text-decoration: underline;
+}
+
+#signup .back button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1em;
+}
+
+#signup .back button:hover {
+  background-color: #5a6268;
+}
+
+#signup .social-login {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#signup .social-login button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #222;
+}
+
+#signup .social-login button img {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+#signup #facebook-login {
+  color: #3b5998;
+  border-color: #3b5998;
+}
+
+#signup #facebook-login:hover {
+  background-color: #3b5998;
+  color: #222;
+}
+
+#signup #gmail-login {
+  color: #db4437;
+  border-color: #db4437;
+}
+
+#signup #gmail-login:hover {
+  background-color: #db4437;
+  color: #222;
+}
+
+#signup #discord-login {
+  color: #7289da;
+  border-color: #7289da;
+}
+
+#signup #discord-login:hover {
+  background-color: #7289da;
+  color: #222;
+}
+
+#signup .parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#signup .child {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: #ddd;
+}
+
+#signup .child:hover {
+  background-color: white;
+  background-position: -100px 100px, -100px 100px;
+  transform: rotate3d(0.5, 1, 0, 30deg);
+  transform: perspective(180px) rotateX(60deg) translateY(2px);
+  box-shadow: 0px 10px 10px rgba(1, 49, 182, 0.7);
+}
+
+#signup button {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+#signup .button:hover {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg)
+    translateY(2px);
+  border-radius: 50%;
+}

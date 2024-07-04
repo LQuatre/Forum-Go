@@ -47,10 +47,46 @@ var webRoutes = WebRoutes{
 		handlers.Authenticate,
 	},
 	{
+		"profile",
+		"GET",
+		"/profile",
+		handlers.Profile,
+	},
+	{
 		"logout",
 		"GET",
 		"/logout",
 		handlers.Logout,
+	},
+	{
+		"closeSession",
+		"POST",
+		"/session/close",
+		handlers.AdminCloseASession,
+	},
+	{
+		"editProfile",
+		"GET",
+		"/edit_profile",
+		handlers.EditProfile,
+	},
+	{
+		"admin",
+		"GET",
+		"/admin",
+		handlers.Admin,
+	},
+	{
+		"adminUpdate",
+		"POST",
+		"/admin/update",
+		handlers.AdminUpdate,
+	},
+	{
+		"adminUpdate2",
+		"POST",
+		"/admin/update2",
+		handlers.AdminUpdate2,
 	},
 	{
 		"newThread",
@@ -74,8 +110,8 @@ var webRoutes = WebRoutes{
 	{
 		"postThread",
 		"POST",
-		"/thread/post",
-		handlers.PostThread,
+		"/thread/comment",
+		handlers.CommentThread,
 	},
 	{
 		"Category",
@@ -130,6 +166,12 @@ var webRoutes = WebRoutes{
 		"GET",
 		"/topics/delete",
 		handlers.DeleteTopic,
+	},
+	{
+		"goTopic",
+		"GET",
+		"/topics/topic",
+		handlers.GoTopic,
 	},
 	{
 		"error",

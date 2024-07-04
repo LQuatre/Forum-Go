@@ -10,6 +10,7 @@ type Topic struct {
 	Name         string
 	CategoryUuId string
 	CreatedAt    time.Time
+	Threads      []Thread
 }
 
 func Topics() (topics []Topic, err error) {
@@ -92,7 +93,6 @@ func GetAllTopics() (topics []Topic, err error) {
 		topics = append(topics, topic)
 	}
 	rows.Close()
-	fmt.Printf("Topics: %v", topics)
 	return
 }
 
@@ -147,5 +147,12 @@ func TopicsFromCategoryUUID(uuid string) (topics []Topic, err error) {
 		topics = append(topics, topic)
 	}
 	rows.Close()
+	return
+}
+
+func GetTopicByUUID(uuid string) (topic Topic, err error) {
+	topic = Topic{}
+	err = Db.QueryRow("SELECT uuid, name, category_uuid, created_at FROM topics WHERE uuid = ?", uuid).
+		Scan(&topic.Uuid, &topic.Name, &topic.CategoryUuId, &topic.CreatedAt)
 	return
 }
