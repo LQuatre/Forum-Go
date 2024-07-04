@@ -66,11 +66,19 @@ func ReadThread(writer http.ResponseWriter, request *http.Request) {
             }
             comments[i].Author = user
         }
-        _, err = session(writer, request)
+        sess, err := session(writer, request)
         if err != nil {
             generateHTML(writer, &thread, "layout", "navbar", "thread")
         } else {
-            generateHTML(writer, &thread, "layout", "auth.navbar", "auth.thread")
+            user, err := sess.User()
+            if err != nil {
+                danger(err, "Cannot get user from session")
+            }
+            if user.IsAdmin {
+                generateHTML(writer, &thread, "layout", "admin.navbar", "auth.thread")
+            } else {
+                generateHTML(writer, &thread, "layout", "auth.navbar", "auth.thread")
+            }
         }
     }
 }

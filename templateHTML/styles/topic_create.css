@@ -1,0 +1,106 @@
+/* Réinitialisation des marges et des paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles généraux pour le corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* En-tête */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+/* Section des topics */
+.topics {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.topics h1 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.topics ul {
+    list-style-type: none;
+}
+
+.topics ul li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.topics ul li h2 {
+    font-size: 1.2rem;
+}
+
+.topics ul li p {
+    color: #777;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Bouton "Créer un nouveau topic" */
+#btnNewTopic {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#btnNewTopic:hover {
+    background-color: #0056b3;
+}
+
+/* Formulaire pour créer un topic */
+#newTopicForm {
+    margin-top: 10px;
+}
+
+#newTopicForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#newTopicForm input[type="text"],
+#newTopicForm input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#newTopicForm input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#newTopicForm input[type="submit"]:hover {
+    background-color: #218838;
+}

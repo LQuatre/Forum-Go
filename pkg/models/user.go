@@ -12,6 +12,7 @@ type User struct {
 	Email     string
 	Password  string
 	CreatedAt time.Time
+	IsAdmin   bool
 }
 
 func (user *User) Create() (err error) {
@@ -46,23 +47,49 @@ func (user *User) Create() (err error) {
 
 func UserByEmail(email string) (user User, err error) {
 	user = User{}
-	err = Db.QueryRow("SELECT uuid, name, email, password, created_at FROM users WHERE email = ?", email).
-		Scan(&user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, name, email, password, created_at, isAdmin FROM users WHERE email = ?", email).
+		Scan(&user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt, &user.IsAdmin)
 	return user, err
 }
 
 func UserByName(name string) (user User, err error) {
 	user = User{}
-	err = Db.QueryRow("SELECT uuid, name, email, password, created_at FROM users WHERE name = ?", name).
-		Scan(&user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, name, email, password, created_at, isAdmin FROM users WHERE name = ?", name).
+		Scan(&user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt, &user.IsAdmin)
 	return user, err
 }
 
 func UserByUUID(uuid string) (user User, err error) {
 	user = User{}
-	err = Db.QueryRow("SELECT uuid, name, email, password, created_at FROM users WHERE uuid = ?", uuid).
-		Scan(&user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, name, email, password, created_at, isAdmin FROM users WHERE uuid = ?", uuid).
+		Scan(&user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt, &user.IsAdmin)
 	return user, err
+}
+
+func GetAllUsers() (users []User, err error) {
+	rows, err := Db.Query("SELECT uuid, name, email, password, created_at, isAdmin FROM users")
+	if err != nil {
+		return
+	}
+	for rows.Next() {
+		user := User{}
+		if err = rows.Scan(&user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt, &user.IsAdmin); err != nil {
+			return
+		}
+		users = append(users, user)
+	}
+	rows.Close()
+	return
+}
+
+func (user *User) SetName(name string) (err error) {
+	user.Name = name
+	return
+}
+
+func (user *User) SetEmail(email string) (err error) {
+	user.Email = email
+	return
 }
 
 func (user *User) Update() (err error) {
@@ -73,7 +100,19 @@ func (user *User) Update() (err error) {
 	}
 	defer stmt.Close()
 
-	_, err = stmt.Exec(user.Name, user.Email)
+	_, err = stmt.Exec(user.Name, user.Email, user.Uuid)
+	return err
+}
+
+func (user *User) Update2() (err error) {
+	statement := "UPDATE users SET isAdmin = ? WHERE Uuid = ?"
+	stmt, err := Db.Prepare(statement)
+	if err != nil {
+		return
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(user.IsAdmin, user.Uuid)
 	return err
 }
 
@@ -116,6 +155,10 @@ func (user *User) Session() (session Session, err error) {
 	return
 }
 
+func (user *User) CheckPassword(password string) bool {
+	return Encrypt(password) == user.Password
+}
+ 
 func (user *User) CreateThread(topicUuId string, title string) (thread Thread, err error) {
 	statement := "INSERT INTO threads (uuid, topic_uuid, user_uuid, title, created_at) VALUES (?, ?, ?, ?, ?)"
 	stmt, err := Db.Prepare(statement)
@@ -172,9 +215,6 @@ func (user *User) CreateTopic(name, categoryuuid string) (topic Topic, err error
 
 
 func (user *User) CreateComment(thread *Thread, body string) (*Comment, error) {
-	fmt.Printf("user: %v\n", user)
-	fmt.Printf("thread: %v\n", thread)
-	fmt.Printf("body: %v\n", body)
 	statement := "INSERT INTO comments (uuid, body, user_uuid, thread_uuid, created_at) VALUES (?, ?, ?, ?, ?)"
 	stmt, err := Db.Prepare(statement)
 	if err != nil {
