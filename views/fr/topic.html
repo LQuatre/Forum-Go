@@ -9,6 +9,8 @@
         <form role="form" action="/thread/create" method="POST">
           <label for="Name">Title:</label>
           <input type="text" id="name" name="name" />
+          <label for="Desc">Description:</label>
+          <input type="text" id="desc" name="desc" />
           <input type="hidden" name="topic-uuid" value="{{ .Uuid }}" />
           <button type="submit">Create</button>
         </form>
@@ -16,7 +18,8 @@
       <ul>
         {{ range .Threads }}
         <li>
-          <h4><a href="/thread/read?uuid={{ .Uuid }}">{{ .Title }}</a></h4>
+          <h3><a href="/thread/read?uuid={{ .Uuid }}">{{ .Title }}</a></h4>
+          <text>{{ .Desc }}</text>
           <p>{{ .CreatedAt }}</p>
         </li>
         {{ end }}

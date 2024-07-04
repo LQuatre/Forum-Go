@@ -1,15 +1,23 @@
-{{ define "content" }}
+  {{ define "content" }}
 
 <main>
   <section id="index">
-    <!-- <div class="centered">
-      <div class="centered-h1">
-        <p>JILT FORUM</p>
-      </div>
-      <div class="centered-text">
-        <p>Ce forum a ...............................................</p>
-      </div>
-    </div> -->
+    <div class="categories">
+      <div class="categories-container">
+        {{ range . }}
+          <div class="category">
+            <h1><a href="/categories/category?uuid={{ .Uuid }}">{{ .Name }}</a></h1>
+            <ul>
+              {{ range .Topics }}
+                <li>
+                  <h2><a href="/topics/topic?uuid={{ .Uuid }}">{{ .Name }}</a></h2>
+                  <p>{{ .CreatedAt }}</p>
+                </li>
+              {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    </div>
     <div class="custom-shape-divider-bottom-1719406001">
       <svg
         data-name="Layer 1"
@@ -33,7 +41,6 @@
         ></path>
       </svg>
     </div>
-    <script src="/static/js/script.js"></script>
   </section>
 </main>
 {{ end }}

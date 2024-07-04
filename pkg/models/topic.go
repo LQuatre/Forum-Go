@@ -8,6 +8,7 @@ import (
 type Topic struct {
 	Uuid         string
 	Name         string
+	Description  string
 	CategoryUuId string
 	CreatedAt    time.Time
 	Threads      []Thread

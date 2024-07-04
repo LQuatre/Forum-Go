@@ -22,16 +22,16 @@ func Index(writer http.ResponseWriter, request *http.Request) {
 	} else {
 		sess, err := session(writer, request)
 		if err != nil {
-			generateHTML(writer, nil, "layout", "navbar", "index")
+			generateHTML(writer, &categories, "layout", "navbar", "index")
 		} else {
 			user, err := sess.User()
 			if err != nil {
 				danger(err, "Cannot get user from session")
 			}
 			if user.IsAdmin {
-				generateHTML(writer, &categories, "layout", "admin.navbar", "auth.index")
+				generateHTML(writer, &categories, "layout", "admin.navbar", "index")
 			} else {
-				generateHTML(writer, &categories, "layout", "auth.navbar", "auth.index")
+				generateHTML(writer, &categories, "layout", "auth.navbar", "index")
 			}
 		}
 	}

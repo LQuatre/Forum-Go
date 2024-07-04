@@ -42,7 +42,8 @@ func CreateTopic(writer http.ResponseWriter, request *http.Request) {
 		}
 		name := request.PostFormValue("name")
 		categoryuuid := request.PostFormValue("cat-uuid")
-		if _, err := user.CreateTopic(name, categoryuuid); err != nil {
+		desc := request.PostFormValue("desc")
+		if _, err := user.CreateTopic(name, categoryuuid, desc); err != nil {
 			danger(err, "Cannot create topic")
 		}
 		http.Redirect(writer, request, "/categories/category?uuid="+categoryuuid, 302)
@@ -83,16 +84,16 @@ func GoTopic(writer http.ResponseWriter, request *http.Request) {
 		topic.Threads = threads
 		sess, err := session(writer, request)
 		if err != nil {
-			http.Redirect(writer, request, "/login", 302)
+			generateHTML(writer, &topic, "layout", "navbar", "topic")
 		} else {
 			user, err := sess.User()
 			if err != nil {
 				danger(err, "Cannot get user from session")
 			}
 			if user.IsAdmin {
-				generateHTML(writer, &topic, "layout", "admin.navbar", "auth.topic")
+				generateHTML(writer, &topic, "layout", "admin.navbar", "topic")
 			} else {
-				generateHTML(writer, &topic, "layout", "auth.navbar", "auth.topic")
+				generateHTML(writer, &topic, "layout", "auth.navbar", "topic")
 			}
 		}
 	}
