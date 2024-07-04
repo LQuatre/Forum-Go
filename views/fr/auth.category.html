@@ -8,6 +8,8 @@
       <form role="form" action="/topics/create" method="POST">
         <label for="Name">Title:</label>
         <input type="text" id="name" name="name" />
+        <label for="Desc">Description:</label>
+        <input type="text" id="desc" name="desc" />
         <input type="hidden" name="cat-uuid" value="{{ .Uuid }}" />
         <button type="submit">Create</button>
       </form>
@@ -16,6 +18,7 @@
         {{ range .Topics }}
         <li>
           <h3><a href="/topics/topic?uuid={{ .Uuid }}">{{ .Name }}</a></h3>
+          <label>{{ .Description }}</label>
           <p>{{ .CreatedAt }}</p>
         </li>
         {{ end }}
