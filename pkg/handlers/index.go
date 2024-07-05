@@ -63,15 +63,6 @@ func Help(writer http.ResponseWriter, request *http.Request) {
 	}
 }
 
-func Help(writer http.ResponseWriter, request *http.Request) {
-	_, err := session(writer, request)
-	if err != nil {
-		generateHTML(writer, nil, "layout", "navbar", "help")
-	} else {
-		generateHTML(writer, nil, "layout", "auth.navbar", "help")
-	}
-}
-
 func Err(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
 	_, err := session(writer, request)
