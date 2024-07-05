@@ -1,0 +1,24 @@
+{{ define "content" }}
+
+<div class="chat">
+    <div class="chat-title">
+      <h1>Assistance</h1>
+      <h2>JILT Forum</h2>
+      <figure class="avatar">
+        <img src="/static/img/jilt.png" /></figure>
+    </div>
+    <div class="messages">
+      <div class="messages-content"></div>
+    </div>
+    <div class="message-box">
+      <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+      <input id="username" type="hidden" value="{{ .Name }}">
+      <button type="submit" class="message-submit">Send</button>
+    </div>
+  
+  </div>
+  <div class="bg"></div>
+
+<script type="text/javascript" src="/static/js/chat.js"></script>
+
+{{ end }}
