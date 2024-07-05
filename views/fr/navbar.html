@@ -3,9 +3,9 @@
 <nav>
   <div class="navbar">
     <div class="right">
-      <a href="/" class="navbar-logo"
-        ><img src="/static/img/logoJILT.png" alt="Logo"
-      /></a>
+      <a href="/" class="navbar-logo">
+        <img src="/static/img/logoJILT.png" alt="Logo" />
+      </a>
       <div class="a">
         <a href="/">Accueil</a>
         <a href="/about">À propos</a>
@@ -14,9 +14,9 @@
     </div>
     <div class="left">
       <div class="profile-menu">
-        <div class="profile-icon">
+        <div class="profile-icon" id="profile-icon">
           <img src="/static/img/bonhomme.png" alt="User Icon" />
-          <div class="dropdown-menu">
+          <div class="dropdown-menu" id="dropdown-menu">
             <a href="/login">Se connecter</a>
             <a href="/signup">S'inscrire</a>
           </div>
@@ -26,4 +26,7 @@
   </div>
 </nav>
 
+<script src="/static/js/script.js"></script>
+</body>
+</html>
 {{ end }}

@@ -14,7 +14,6 @@ nav {
   padding: 10px 20px;
   border-radius: 73px;
   background: #e0e0e0;
-  /* width: 75%; */
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 
@@ -28,9 +27,8 @@ nav {
 .right .a a {
   padding: 0 20px;
   color: #2f2f2f;
-  text-decoration: white;
+  text-decoration: none;
   border-radius: 15px;
-  display: auto;
 }
 
 .right .a a:hover {
@@ -49,12 +47,11 @@ nav {
 }
 
 .navbar-logo img {
-  height: 70px; /* Ajustez la hauteur du logo selon vos besoins */
+  height: 70px;
   overflow: hidden;
   border-radius: 45px;
 }
 
-/* Styles pour le menu déroulant du profil utilisateur */
 .profile-menu {
   position: relative;
 }
@@ -81,26 +78,15 @@ nav {
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 60px; /* Ajustez la position du menu déroulant selon votre mise en page */
-  right: 0; /* Assurez-vous que le menu est aligné à droite sous l'icône du profil */
+  top: 60px;
+  right: 0;
   background-color: rgb(224, 224, 224);
   box-shadow: 0 8px 16px rgba(179, 168, 168, 0.2);
   border-radius: 10px;
   z-index: 1;
 }
 
-.dropdown-menu::before {
-  content: "";
-  position: absolute;
-  top: -10px; /* Place the arrow above the dropdown menu */
-  right: 20px; /* Adjust this value to position the arrow */
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent transparent rgb(209, 192, 192) transparent;
-  transform: scale(1.2);
-}
-
-.profile-icon:hover .dropdown-menu {
+.profile-icon.active .dropdown-menu {
   display: block;
 }
 
