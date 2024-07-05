@@ -5,7 +5,7 @@ import (
 )
 
 func NewRouter() *mux.Router {
-    router := mux.NewRouter()
+    router := mux.NewRouter().StrictSlash(true)
 
     for _, route := range webRoutes {
         router.

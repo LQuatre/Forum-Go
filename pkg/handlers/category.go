@@ -97,7 +97,7 @@ func GoCategory(writer http.ResponseWriter, request *http.Request) {
 				danger(err, "Cannot get user from session")
 			}
 			if user.IsAdmin {
-				generateHTML(writer, &category, "auth.layout", "admin.navbar", "auth.category")
+				generateHTML(writer, &category, "layout", "admin.navbar", "auth.category")
 			} else {
 				http.Redirect(writer, request, "/admin", 302)
 			}

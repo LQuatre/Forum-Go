@@ -31,12 +31,12 @@ func CreateThread(writer http.ResponseWriter, request *http.Request) {
         if err != nil {
             danger(err, "Cannot get user from session")
         }
-        topicuuid, name := request.PostFormValue("topic-uuid"), request.PostFormValue("name")
+        topicuuid, name, desc := request.PostFormValue("topic-uuid"), request.PostFormValue("name"), request.PostFormValue("desc");
         if err != nil {
             danger(err, "Invalid topic UUID")
             return
         }
-        if _, err := user.CreateThread(topicuuid, name); err != nil {
+        if _, err := user.CreateThread(topicuuid, name, desc); err != nil {
             danger(err, "Cannot create thread")
         }
         http.Redirect(writer, request, "/", 302)
@@ -75,9 +75,9 @@ func ReadThread(writer http.ResponseWriter, request *http.Request) {
                 danger(err, "Cannot get user from session")
             }
             if user.IsAdmin {
-                generateHTML(writer, &thread, "layout", "admin.navbar", "auth.thread")
+                generateHTML(writer, &thread, "layout", "admin.navbar", "thread")
             } else {
-                generateHTML(writer, &thread, "layout", "auth.navbar", "auth.thread")
+                generateHTML(writer, &thread, "layout", "auth.navbar", "thread")
             }
         }
     }

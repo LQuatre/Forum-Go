@@ -93,11 +93,10 @@ body {
 Chat
 --------------------*/
 .chat {
-  display: none;
   position: absolute;
-  bottom: 26%;
-  right: -7.5%;
-  transform: translate(-50%, 50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
   height: 80vh;
   max-height: 500px;
@@ -106,6 +105,7 @@ Chat
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
+  display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
@@ -342,24 +342,6 @@ Message Box
   outline: none !important;
   transition: background 0.2s ease;
 }
-
-.chat-close {
-  position: absolute;
-  z-index: 1;
-  top: 9px;
-  right: 10px;
-  color: #fff;
-  border: none;
-  background: #8a3024;
-  font-size: 10px;
-  text-transform: uppercase;
-  line-height: 1;
-  padding: 6px 10px;
-  border-radius: 10px;
-  outline: none !important;
-  transition: background 0.2s ease;
-}
-
 .message-box .message-submit:hover {
   background: #1d7745;
 }
@@ -481,50 +463,4 @@ Bounce
   to {
     transform: translateY(-10px);
   }
-}
-.chatBtn {
-  width: 55px;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: none;
-  background-color: #d1d0ca;
-  background-image: linear-gradient(147deg, rgb(31, 163, 75), #37463f, #d3f8dc);
-  cursor: pointer;
-  padding-top: 3px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.164);
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background-size: 300%;
-  background-position: left;
-  transition-duration: 1s;
-}
-
-.tooltip {
-  position: absolute;
-  top: -40px;
-  opacity: 0;
-  background-color: rgb(141, 141, 137);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 0.5s;
-  pointer-events: none;
-  letter-spacing: 0.5px;
-}
-
-.chatBtn:hover .tooltip {
-  opacity: 1;
-  transition-duration: 0.5s;
-}
-
-.chatBtn:hover {
-  background-position: right;
-  transition-duration: 1s;
 }

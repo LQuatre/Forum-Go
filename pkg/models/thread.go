@@ -7,10 +7,11 @@ import (
 type Thread struct {
 	Uuid      string
 	Title     string
+	Desc 	  string
 	TopicUuId string
 	UserUuId  string
 	CreatedAt time.Time	
-	Comments []Comment
+	Comments  []Comment
 }
 
 // format the CreatedAt date to display nicely on the screen
@@ -52,13 +53,13 @@ func (thread *Thread) Posts() (comments []Comment, err error) {
 
 // Get all threads in a topic
 func ThreadsByTopicUUID(topicUuId string) (threads []Thread, err error) {
-	rows, err := Db.Query("SELECT uuid, topic_uuid, user_uuid, title, created_at FROM threads WHERE topic_uuid = ? ORDER BY created_at DESC", topicUuId)
+	rows, err := Db.Query("SELECT uuid, topic_uuid, user_uuid, title, desc, created_at FROM threads WHERE topic_uuid = ? ORDER BY created_at DESC", topicUuId)
 	if err != nil {
 		return
 	}
 	for rows.Next() {
 		thread := Thread{}
-		if err = rows.Scan(&thread.Uuid, &thread.TopicUuId, &thread.UserUuId, &thread.Title, &thread.CreatedAt); err != nil {
+		if err = rows.Scan(&thread.Uuid, &thread.TopicUuId, &thread.UserUuId, &thread.Title, &thread.Desc, &thread.CreatedAt); err != nil {
 			return
 		}
 		threads = append(threads, thread)
@@ -70,8 +71,8 @@ func ThreadsByTopicUUID(topicUuId string) (threads []Thread, err error) {
 // Get a thread by the UUID
 func ThreadByUUID(uuid string) (thread Thread, err error) {
 	thread = Thread{}
-	err = Db.QueryRow("SELECT uuid, topic_uuid, user_uuid, title, created_at FROM threads WHERE uuid = ?", uuid).
-		Scan(&thread.Uuid, &thread.TopicUuId, &thread.UserUuId, &thread.Title, &thread.CreatedAt)
+	err = Db.QueryRow("SELECT uuid, topic_uuid, user_uuid, title, desc, created_at FROM threads WHERE uuid = ?", uuid).
+		Scan(&thread.Uuid, &thread.TopicUuId, &thread.UserUuId, &thread.Title, &thread.Desc, &thread.CreatedAt)
 	return
 }
 
