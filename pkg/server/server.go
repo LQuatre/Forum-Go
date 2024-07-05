@@ -6,10 +6,26 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/gorilla/websocket"
 	. "jilt.com/m/config"
 	"jilt.com/m/pkg/models"
 	. "jilt.com/m/pkg/routes"
 )
+
+type Message struct {
+	Username string `json:"username"`
+	Message  string `json:"message"`
+	Typing   bool   `json:"typing"`
+}
+
+var upgrader = websocket.Upgrader{
+	CheckOrigin: func(r *http.Request) bool {
+	 	return true
+	},
+}
+
+var clients = make(map[*websocket.Conn]bool)
+var broadcast = make(chan Message)
 
 func StartWebServer() {
 	r := NewRouter()
