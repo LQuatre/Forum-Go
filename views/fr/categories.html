@@ -5,12 +5,18 @@
 
   {{ range . }}
   <div class="category">
-    <h3>{{ .Name }}</h3>
-    <a href="/categories/category?uuid={{ .Uuid }}" class="category-a"
-      >Read more</a
-    >
+    <h1>{{ .Name }}</h1>
+    <p>
+      <a href="/categories/category?uuid={{ .Uuid }}">View Category</a>
+    </p>
+    <ul>
+      {{ range .Topics }}
+      <li>
+        <h2><a href="/topics/topic?uuid={{ .Uuid }}">{{ .Name }}</a></h2>
+        <p>{{ .CreatedAt }}</p>
+      </li>
+      {{ end }}
+    </ul>
   </div>
   {{ end }}
 </div>
-
-{{ end }}

@@ -64,7 +64,7 @@ func DeleteCategory(writer http.ResponseWriter, request *http.Request) {
 		if err := category.Delete(); err != nil {
 			danger(err, "Cannot delete category")
 		}
-		http.Redirect(writer, request, "/categories", 302)
+		http.Redirect(writer, request, "/admin", 302)
 	}
 }
 
@@ -87,11 +87,20 @@ func GoCategory(writer http.ResponseWriter, request *http.Request) {
 			errorMessage(writer, request, msg)
 		}
 		category.Topics = topics
-		_, err = session(writer, request)
+		category.Topics = topics
+		sess, err := session(writer, request)
 		if err != nil {
-			generateHTML(writer, &category, "layout", "public.navbar", "public.category")
+			http.Redirect(writer, request, "/login", 302)
 		} else {
-			generateHTML(writer, &category, "auth.layout", "auth.navbar", "auth.category")
+			user, err := sess.User()
+			if err != nil {
+				danger(err, "Cannot get user from session")
+			}
+			if user.IsAdmin {
+				generateHTML(writer, &category, "auth.layout", "admin.navbar", "auth.category")
+			} else {
+				http.Redirect(writer, request, "/admin", 302)
+			}
 		}
 	}
 }
