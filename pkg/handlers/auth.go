@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strconv"
 	"time"
 
 	"golang.org/x/oauth2"
@@ -28,23 +29,23 @@ var (
 func init() {
 	// Replace these with your Google OAuth credentials
 	googleOauthConfig = &oauth2.Config{
-		RedirectURL:  "http://localhost:8080/auth/google",
+		RedirectURL:  "http://lquatre.fr:8080/auth/google",
 		ClientID:     "760820018039-vhlp72gm70411lf6sla8125cg49t9jdd.apps.googleusercontent.com",
 		ClientSecret: "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",
 		Scopes:       []string{"https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"},
 		Endpoint:     google.Endpoint,
 	}
 	facebookOauthConfig = &oauth2.Config{
-		RedirectURL:  "http://localhost:8080/auth/facebook",
+		RedirectURL:  "http://lquatre.fr:8080/auth/facebook",
 		ClientID:     "390126090201300",
 		ClientSecret: "61138312baa063576def63bf49af0b40",
 		Scopes:       []string{"email"},
 		Endpoint:     facebook.Endpoint,
 	}
 	githubOauthConfig = &oauth2.Config{
-		RedirectURL:  "http://localhost:8080/auth/github",
-		ClientID:     "",
-		ClientSecret: "",
+		RedirectURL:  "http://lquatre.fr:8080/auth/github",
+		ClientID:     "Iv23liHPnL1uz1sAe9OR",
+		ClientSecret: "bb2cd7f9248c22b8dc05ba670a5069a6ad3af002",
 		Scopes:       []string{"user:email"},
 		Endpoint:     github.Endpoint,
 	}
@@ -329,15 +330,15 @@ func AuthGoogle(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-	emptyUser := models.User{}
-	lookuser, _ := models.UserByEmail(userInfo["email"].(string))
-	if lookuser != emptyUser {
-		http.Redirect(w, r, "/err?msg=Email already used", http.StatusTemporaryRedirect)
-		return
-	}
-
 	user, err := models.UserByGoogleID(userInfo["id"].(string))
 	if err != nil {
+		emptyUser := models.User{}
+		lookuser, _ := models.UserByEmail(userInfo["email"].(string))
+		if lookuser != emptyUser {
+			http.Redirect(w, r, "/err?msg=Email already used", http.StatusTemporaryRedirect)
+			return
+		}
+
 		secureRandomResult, err := secureRandomString(16)
 		if err != nil {
 			http.Error(w, "Failed to generate secure random string", http.StatusInternalServerError)
@@ -412,15 +413,15 @@ func AuthFacebook(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	emptyUser := models.User{}
-	lookuser, _ := models.UserByEmail(userInfo["email"].(string))
-	if lookuser != emptyUser {
-		http.Redirect(writer, request, "/err?msg=Email already used", http.StatusTemporaryRedirect)
-		return
-	}
-
 	user, err := models.UserByFacebookID(userInfo["id"].(string))
 	if err != nil {
+		emptyUser := models.User{}
+		lookuser, _ := models.UserByEmail(userInfo["email"].(string))
+		if lookuser != emptyUser {
+			http.Redirect(writer, request, "/err?msg=Email already used", http.StatusTemporaryRedirect)
+			return
+		}
+
 		secureRandomResult, err := secureRandomString(16)
 		if err != nil {
 			http.Error(writer, "Failed to generate secure random string", http.StatusInternalServerError)
@@ -459,6 +460,10 @@ func Github(writer http.ResponseWriter, request *http.Request) {
 	http.Redirect(writer, request, url, http.StatusTemporaryRedirect)
 }
 
+func floatToString(value float64) string {
+	return strconv.FormatFloat(value, 'f', -1, 64)
+}
+
 func AuthGithub(writer http.ResponseWriter, request *http.Request) {
 	state := request.FormValue("state")
 	oauthState, _ := request.Cookie("oauthstate")
@@ -494,25 +499,58 @@ func AuthGithub(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	emptyUser := models.User{}
-	lookuser, _ := models.UserByEmail(userInfo["email"].(string))
-	if lookuser != emptyUser {
-		http.Redirect(writer, request, "/err?msg=Email already used", http.StatusTemporaryRedirect)
-		return
+	// for key, value := range userInfo {
+	// 	fmt.Fprintf(writer, "%s: %v\n", key, value)
+	// }
+	for key, value := range userInfo {
+		fmt.Printf("%s: %v\n", key, value)
 	}
 
-	user, err := models.UserByGithubID(userInfo["id"].(string))
+	
+	// do a request to get emails
+	response, err = client.Get("https://api.github.com/user/emails")
 	if err != nil {
+		fmt.Printf("Failed to get emails: %v\n", err)
+		generateHTML(writer, nil, "layout", "navbar", "error")
+		return
+	}
+	defer response.Body.Close()
+
+	var emails []map[string]interface{}
+	err = json.NewDecoder(response.Body).Decode(&emails)
+	if err != nil {
+		fmt.Printf("Failed to parse emails response: %v\n", err)
+		generateHTML(writer, nil, "layout", "navbar", "error")
+		return
+	}
+	
+	for _, email := range emails {
+		fmt.Printf("Email: %s\n", email["email"])
+	}
+
+	stringId := floatToString(userInfo["id"].(float64))	
+	fmt.Println("stringId: ", stringId)
+	user, err := models.UserByGithubID(stringId)
+	if err != nil {
+		emptyUser := models.User{}
+		if _, ok := emails[0]["email"].(string); ok {
+			lookuser, _ := models.UserByEmail(emails[0]["email"].(string))
+			if lookuser != emptyUser {
+				http.Redirect(writer, request, "/err?msg=Email already used", http.StatusTemporaryRedirect)
+				return
+			}
+		}
+
 		secureRandomResult, err := secureRandomString(16)
 		if err != nil {
 			http.Error(writer, "Failed to generate secure random string", http.StatusInternalServerError)
 			return
-		}
+		}			
 		user = models.User{
 			Name:      userInfo["name"].(string),
-			Email:     userInfo["email"].(string),
+			Email:	   emails[0]["email"].(string),
 			Password:  secureRandomResult,
-			GithubID:  userInfo["id"].(string),
+			GithubID:  stringId,
 		}
 		if err := user.Create(); err != nil {
 			http.Error(writer, "Cannot create user", http.StatusInternalServerError)

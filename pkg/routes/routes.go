@@ -215,6 +215,18 @@ var webRoutes = WebRoutes{
 		"/auth/facebook",
 		handlers.AuthFacebook,
 	},
+	{
+		"github",
+		"GET",
+		"/github",
+		handlers.Github,
+	},
+	{
+		"authGithub",
+		"GET",
+		"/auth/github",
+		handlers.AuthGithub,
+	},
 	// {
 	// 	"twitter",
 	// 	"GET",
@@ -227,16 +239,10 @@ var webRoutes = WebRoutes{
 	// 	"/auth/twitter",
 	// 	handlers.AuthTwitter,
 	// },
-	// {
-	// 	"github",
-	// 	"GET",
-	// 	"/github",
-	// 	handlers.Github,
-	// },
-	// {
-	// 	"authGithub",
-	// 	"GET",
-	// 	"/auth/github",
-	// 	handlers.AuthGithub,
-	// },
+	{
+		"chat",
+		"GET",
+		"/chat",
+		handlers.Chat,
+	},
 }

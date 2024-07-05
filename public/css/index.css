@@ -50,3 +50,8 @@ body {
 .custom-shape-divider-bottom-1719406001 .shape-fill {
   fill: #4a4a4a;
 }
+
+#messages {
+  height: 300px;
+  overflow-y: scroll;
+}

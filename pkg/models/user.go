@@ -270,6 +270,42 @@ func (user *User) CreateComment(thread *Thread, body string) (*Comment, error) {
 	return comment, nil
 }
 
+func (user *User) CreateTicket(name string) (ticket Ticket, err error) {
+	statement := "INSERT INTO tickets (uuid, name, user_uuid, created_at) VALUES (?, ?, ?, ?)"
+	stmt, err := Db.Prepare(statement)
+	if err != nil {
+		return
+	}
+	defer stmt.Close()
+
+	uuid := createUUID()
+	_, err = stmt.Exec(uuid, name, user.Uuid, time.Now())
+	if err != nil {
+		return
+	}
+
+	stmt.QueryRow(uuid).Scan(&ticket.Uuid, &ticket.Name, &ticket.UserUuId, &ticket.CreatedAt)
+	return
+}
+
+func (user *User) CreateMessage(ticket *Ticket, body string) (message MessageTicket, err error) {
+	statement := "INSERT INTO messages (uuid, body, ticket_uuid, user_uuid, created_at) VALUES (?, ?, ?, ?, ?)"
+	stmt, err := Db.Prepare(statement)
+	if err != nil {
+		return
+	}
+	defer stmt.Close()
+
+	uuid := createUUID()
+	_, err = stmt.Exec(uuid, body, ticket.Uuid, user.Uuid, time.Now())
+	if err != nil {
+		return
+	}
+
+	stmt.QueryRow(uuid).Scan(&message.Uuid, &message.Body, &message.TicketUuId, &message.UserUuId, &message.CreatedAt)
+	return
+}
+
 func (user *User) GetName() string {
 	return user.Name
 }

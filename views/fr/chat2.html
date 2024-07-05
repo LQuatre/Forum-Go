@@ -1,0 +1,36 @@
+{{ define "content" }}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-sm-12">
+      <h1 class="text-center">Socket IO Chat</h1>
+      <br />
+      <div id="status"></div>
+      <div id="chat">
+        <input
+          type="hidden"
+          name="username"
+          id="username"
+          class="form-control"
+          value="{{ .Name }}"
+        />
+        <br />
+        <div class="card">
+          <div id="messages" class="card-block"></div>
+        </div>
+        <br />
+        <textarea
+          id="textarea"
+          name="inputMessage"
+          class="form-control"
+          placeholder="Enter message..."
+        ></textarea>
+        <br />
+        <button id="send" class="btn">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/static/js/message.js"></script>
+
+{{ end }}

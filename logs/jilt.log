@@ -1,7 +1,2 @@
-WARNING 2024/07/04 15:12:17 helper.go:74: <nil> Failed to get cookie
-WARNING 2024/07/04 15:19:31 helper.go:74: <nil> Failed to get cookie
-WARNING 2024/07/04 15:21:07 helper.go:74: <nil> Failed to get cookie
-WARNING 2024/07/04 15:25:19 helper.go:74: <nil> Failed to get cookie
-SUCCESS 2024/07/04 15:44:22 helper.go:59: User created:  git
-ERROR 2024/07/04 15:44:27 helper.go:69: sql: no rows in result set Cannot find email
-SUCCESS 2024/07/04 15:44:33 helper.go:59: Authenticated user:  git@gmail.com
+WARNING 2024/07/04 16:20:59 helper.go:74: <nil> Failed to get cookie
+ERROR 2024/07/05 15:19:37 helper.go:69: sql: no rows in result set Cannot find email
