@@ -240,9 +240,21 @@ var webRoutes = WebRoutes{
 	// 	handlers.AuthTwitter,
 	// },
 	{
-		"chat",
+		"websocket",
+		"ws",
+		"/ws",
+		handlers.HandleConnections,
+	},
+	{
+		"apiChatBot",
+		"POST",
+		"/chatbot/createticket",
+		handlers.ChatBotCreateTicket,
+	},
+	{
+		"adminChatBot",
 		"GET",
-		"/chat",
-		handlers.Chat,
+		"/admin/chatbot",
+		handlers.AdminHelps,
 	},
 }

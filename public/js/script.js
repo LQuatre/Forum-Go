@@ -13,3 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+$(".chatBtn").click(function () {
+  $(".chat").css("display", "flex");
+  $(".chatBtn").css("display", "none");
+});
+
+$(".close").click(function () {
+  $(".chat").css("display", "none");
+  $(".chatBtn").css("display", "flex");
+});

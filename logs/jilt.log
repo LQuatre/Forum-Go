@@ -1,0 +1,125 @@
+ERROR 2024/07/06 01:42:17 helper.go:69: Email already used Cannot create user
+SUCCESS 2024/07/06 01:42:17 helper.go:59: User created:  LQuatre
+SUCCESS 2024/07/06 01:42:46 helper.go:59: User created:  LQuatre
+SUCCESS 2024/07/06 01:42:48 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 01:49:00 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 01:49:58 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 01:51:20 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 01:51:54 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 01:52:55 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 01:53:55 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 01:55:04 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 01:55:24 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 01:56:04 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 01:56:09 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 01:56:52 helper.go:74: <nil> Failed to get cookie
+WARNING 2024/07/06 02:00:38 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:00:44 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:05:33 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:10:26 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:12:59 helper.go:74: <nil> Failed to get cookie
+WARNING 2024/07/06 02:14:02 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:14:08 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:14:50 helper.go:74: <nil> Failed to get cookie
+ERROR 2024/07/06 02:15:42 helper.go:69: sql: no rows in result set Cannot find email
+WARNING 2024/07/06 02:15:48 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:15:50 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:20:10 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:20:19 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:22:27 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:22:34 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:24:23 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:25:04 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:27:09 helper.go:74: <nil> Failed to get cookie
+WARNING 2024/07/06 02:32:47 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:32:53 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:35:17 helper.go:74: <nil> Failed to get cookie
+WARNING 2024/07/06 02:37:21 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:37:38 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+SUCCESS 2024/07/06 02:48:19 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:49:03 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:49:43 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:50:32 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:51:56 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:52:40 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 02:55:04 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+WARNING 2024/07/06 02:55:10 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/06 03:15:00 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+SUCCESS 2024/07/06 03:27:25 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+SUCCESS 2024/07/06 03:38:32 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+SUCCESS 2024/07/06 03:50:24 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+ERROR 2024/07/06 03:50:27 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:14 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:34 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:35 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:57 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:57 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:57 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:57 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:51:58 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:52:18 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:53:01 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:54:04 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:54:05 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:54:44 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:56:24 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:56:26 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:56:38 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:56:41 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:56:44 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:57:21 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:57:46 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:58:03 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 03:58:35 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:00:04 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:00:11 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:00:14 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:00:15 helper.go:69: no such table: messages Cannot get replies
+SUCCESS 2024/07/06 04:00:50 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+ERROR 2024/07/06 04:00:56 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:01:27 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:01:34 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:01:35 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:01:35 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:02:54 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:02:54 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:04:31 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:04:31 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:04:49 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:04:49 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:04:50 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:04:50 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:05:32 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:05:32 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:05:34 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:05:34 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:05:35 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:05:35 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:05:46 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:05:46 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:06:27 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:06:27 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:06:36 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:06:36 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:08:03 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:08:03 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:08:11 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:08:11 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:08:18 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:08:18 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:08:23 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:08:23 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:08:52 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:08:52 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:09:15 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:09:15 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:09:17 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:09:17 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:09:18 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:09:18 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:09:19 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:09:19 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:09:19 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:09:19 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/06 04:09:20 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/06 04:09:20 helper.go:69: no such table: messages Cannot get replies
