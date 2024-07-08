@@ -135,20 +135,25 @@ func AdminHelps(writer http.ResponseWriter, request *http.Request) {
 			DefinedName: "",
 			DefinedUUID: "",
 		}
+		fmt.Println(request.URL.Query().Get("uuid"))
 		if request.URL.Query().Get("uuid") != "" {
 			ticket, err := models.TicketByUUID(request.URL.Query().Get("uuid"))
 			if err != nil {
+				fmt.Println(err)
 				danger(err, "Cannot get ticket")
 			}
+			fmt.Println(ticket)
 			adminHelps.Ticket = &ticket
 			replies, err := models.MessageTicketsByTicketUUID(ticket.Uuid)
 			if err != nil {
+				fmt.Println(err)
 				danger(err, "Cannot get replies")
 			}
+			fmt.Println(replies)
 			adminHelps.Replies = &replies
 			adminHelps.DefinedName = ticket.Name
 			adminHelps.DefinedUUID = ticket.UserUuId
-			fmt.Println(adminHelps.DefinedUUID)
+			fmt.Println(adminHelps)
 		}
 		generateHTML(writer, &adminHelps, "layout", "admin.navbar", "chat")
 	}

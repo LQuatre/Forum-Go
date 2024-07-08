@@ -233,7 +233,7 @@ func (user *User) CreateCategory(name string) (category Category, err error) {
 }
 
 func (user *User) CreateTopic(name, desc, categoryuuid string) (topic Topic, err error) {
-	statement := "INSERT INTO topics (uuid, name, desc, category_uuid, created_at) VALUES (?, ?, ?, ?, ?)"
+	statement := "INSERT INTO topics (uuid, name, category_uuid, created_at, desc) VALUES (?, ?, ?, ?, ?)"
 	stmt, err := Db.Prepare(statement)
 	if err != nil {
 		return
@@ -241,12 +241,12 @@ func (user *User) CreateTopic(name, desc, categoryuuid string) (topic Topic, err
 	defer stmt.Close()
 
 	uuid := createUUID()
-	_, err = stmt.Exec(uuid, name, desc, categoryuuid, time.Now())
+	_, err = stmt.Exec(uuid, name, categoryuuid, time.Now(), desc)
 	if err != nil {
 		return
 	}
 
-	stmt.QueryRow(uuid).Scan(&topic.Uuid, &topic.Name, &topic.Description, &topic.CategoryUuId, &topic.CreatedAt)
+	stmt.QueryRow(uuid).Scan(&topic.Uuid, &topic.Name, &topic.CategoryUuId, &topic.CreatedAt, &topic.Description)
 	return
 }
 

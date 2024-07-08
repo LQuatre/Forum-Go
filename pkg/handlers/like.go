@@ -2,76 +2,60 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
 )
 
 func LikeHandler(w http.ResponseWriter, r *http.Request) {
-	// si le post n'est pas  liké alors on like et si il est liké alors on unlike
-	// on recupere le post_id et le user_id
-	// on verifie si le post est liké
-	// si il est liké alors on unlike
-	// si il n'est pas liké alors on like
-	// on retourne le nombre de like
+	fmt.Println("LikeHandler") // /like?post_id=1&user_id=1 get from url
+	postUUID := r.FormValue("post_uuid")
+	userUUID := r.FormValue("user_uuid")
 
-	// on recupere le post_id et le user_id
-	postID := r.FormValue("post_id")
-	userID := r.FormValue("user_id")
-
-	// on verifie si le post est liké
-	like, err := models.GetLikeByPostID(postID)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
+	like, _ := models.GetLikeByPostAndUserUUID(postUUID, userUUID)
+	
 	if like.UUID != "" {
+		fmt.Println("Delete like")
 		like.Delete()
 	} else {
+		fmt.Println("Create like")
 		like = &models.Like{
-			UserID: userID,
-			PostID: postID,
+			UserUUID: userUUID,
+			PostUUID: postUUID,
 		}
 		like.Create()
 	}
 
-	// on retourne le nombre de like
-	likes, err := models.GetLikeByPostID(postID)
+	likes, err := models.GetLikesByPostUUID(postUUID)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	json.NewEncoder(w).Encode(likes)
+	fmt.Println("LikeHandler end")
 }
 
 func DislikeHandler(w http.ResponseWriter, r *http.Request) {
-	// pareille mais avec un dislike
-	postID := r.FormValue("post_id")
-	userID := r.FormValue("user_id")
+	fmt.Println("DislikeHandler")
+	postUUID := r.FormValue("post_uuid")
+	userUUID := r.FormValue("user_uuid")
 
-	dislike, err := models.GetDislikeByPostID(postID)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	dislike, _ := models.GetDislikeByPostAndUserUUID(postUUID, userUUID)
 
 	if dislike.UUID != "" {
+		fmt.Println("Delete dislike")
 		dislike.Delete()
 	} else {
-		dislike = &models.Dislike{
-			UserID: userID,
-			PostID: postID,
+		fmt.Println("Create dislike")
+		dislike := &models.Dislike{
+			UserUUID: userUUID,
+			PostUUID: postUUID,
 		}
 		dislike.Create()
 	}
 
-	dislikes, err := models.GetDislikesByPostID(postID)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	json.NewEncoder(w).Encode(dislikes)
+	json.NewEncoder(w).Encode(dislike)
+	fmt.Println("DislikeHandler end")
 }

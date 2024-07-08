@@ -43,7 +43,6 @@ func HandleConnections(writer http.ResponseWriter, request *http.Request) {
 		var msg Message
 		err := conn.ReadJSON(&msg)
 		if err != nil {
-			fmt.Println(err)
 			delete(clients, conn)
 			return
 		}

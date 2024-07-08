@@ -172,3 +172,48 @@ SUCCESS 2024/07/08 14:32:30 helper.go:59: User created:  LQuatre
 SUCCESS 2024/07/08 14:32:32 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
 ERROR 2024/07/08 14:34:06 helper.go:69: sql: no rows in result set Cannot get ticket
 ERROR 2024/07/08 14:34:06 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:35:03 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:35:03 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:37:19 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:37:19 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:37:29 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:37:29 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:37:29 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:37:29 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:37:30 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:37:30 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:38:28 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:38:28 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:25 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:25 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:28 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:28 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:28 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:28 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:28 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:28 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:34 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:34 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:39 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:39 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:40 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:40 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:39:40 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:39:40 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:40:38 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:40:38 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:40:39 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:40:39 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:43:39 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:43:39 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:44:14 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:44:14 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:44:15 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:44:15 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:44:57 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:45:22 helper.go:69: no such table: messages Cannot get replies
+SUCCESS 2024/07/08 14:58:16 helper.go:59: Session deleted Session deleted successfully
+SUCCESS 2024/07/08 14:58:19 helper.go:59: Session deleted Session deleted successfully
+SUCCESS 2024/07/08 15:04:27 helper.go:59: Session deleted Session deleted successfully
+SUCCESS 2024/07/08 15:05:35 helper.go:59: User created:  Patrick
+SUCCESS 2024/07/08 15:05:56 helper.go:59: Authenticated user:  patrymongars@lquatre.fr

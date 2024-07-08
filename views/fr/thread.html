@@ -10,8 +10,14 @@
       <h3>{{ .Author.Name }}</h3>
       <p>{{ .Body }}</p>
       <p>{{ .CreatedAt }}</p>
-      <button onclick="likeComment('{{ .Uuid }}')">Like</button>
-      <button onclick="dislikeComment('{{ .Uuid }}')">Dislike</button>
+      <p>{{ .Likes }} likes</p>
+      <p>{{ .Dislikes }} dislikes</p>
+      <button onclick="likeComment('{{ .Author.Uuid }}', '{{ .Uuid }}')">
+        &#128077;
+      </button>
+      <button onclick="dislikeComment('{{ .Author.Uuid }}', '{{ .Uuid }}')">
+        &#128078;
+      </button>
     </div>
     {{ end }}
 
@@ -29,14 +35,30 @@
 </div>
 
 <script>
-  function likeComment(commentUuid) {
-    // /like-comment?uuid=commentUuid
+  function likeComment(userUuid, postUuid) {
+    // /like?uuid=commentUuid
+    url = "/like?user_uuid=" + userUuid + "&post_uuid=" + postUuid;
+    fetch(url, {
+      method: "POST",
+    });
+    console.log(
+      "Liked comment with UUID: " + postUuid + " by user: " + userUuid
+    );
 
-    console.log("Liked comment with UUID: " + commentUuid);
+    location.reload();
   }
 
-  function dislikeComment(commentUuid) {
-    console.log("Disliked comment with UUID: " + commentUuid);
+  function dislikeComment(userUuid, postUuid) {
+    // /dislike?uuid=commentUuid
+    url = "/dislike?user_uuid=" + userUuid + "&post_uuid=" + postUuid;
+    fetch(url, {
+      method: "POST",
+    });
+    console.log(
+      "Disliked comment with UUID: " + postUuid + " by user: " + userUuid
+    );
+
+    location.reload();
   }
 </script>
 

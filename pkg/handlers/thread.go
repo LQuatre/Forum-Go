@@ -65,6 +65,30 @@ func ReadThread(writer http.ResponseWriter, request *http.Request) {
                 danger(err, "Cannot get user")
             }
             comments[i].Author = user
+            likes, err := models.GetLikesByPostUUID(comments[i].Uuid)
+            if err != nil {
+                danger(err, "Cannot get likes")
+            }
+            countLikes := 0
+            for k, _ := range likes {
+                likes[k].Value = 1
+                if likes[k].Value == 1 {
+                    countLikes++
+                }
+            }
+            comments[i].Likes = countLikes
+            dislikes, err := models.GetDislikesByPostUUID(comments[i].Uuid)
+            if err != nil {
+                danger(err, "Cannot get dislikes")
+            }
+            countDislikes := 0
+            for k, _ := range dislikes {
+                dislikes[k].Value = -1
+                if dislikes[k].Value == -1 {
+                    countDislikes++
+                }
+            }
+            comments[i].Dislikes = countDislikes
         }
         sess, err := session(writer, request)
         if err != nil {

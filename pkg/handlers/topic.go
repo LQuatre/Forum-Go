@@ -43,7 +43,7 @@ func CreateTopic(writer http.ResponseWriter, request *http.Request) {
 		name := request.PostFormValue("name")
 		categoryuuid := request.PostFormValue("cat-uuid")
 		desc := request.PostFormValue("desc")
-		if _, err := user.CreateTopic(name, categoryuuid, desc); err != nil {
+		if _, err := user.CreateTopic(name, desc, categoryuuid); err != nil {
 			danger(err, "Cannot create topic")
 		}
 		http.Redirect(writer, request, "/categories/category?uuid="+categoryuuid, 302)

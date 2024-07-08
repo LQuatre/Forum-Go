@@ -11,6 +11,7 @@
               {{ range .Topics }}
                 <li>
                   <h2><a href="/topics/topic?uuid={{ .Uuid }}">{{ .Name }}</a></h2>
+                  <h3>{{ .Description }}</h3>
                   <p>{{ .CreatedAt }}</p>
                 </li>
               {{ end }}

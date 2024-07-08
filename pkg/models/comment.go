@@ -9,6 +9,8 @@ type Comment struct {
 	ThreadUuId string
 	CreatedAt  time.Time
 	Author	   User
+	Likes    int
+	Dislikes int
 }
 
 func (post *Comment) CreatedAtDate() string {
