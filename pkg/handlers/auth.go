@@ -361,7 +361,7 @@ func AuthGoogle(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Cannot create session", http.StatusInternalServerError)
 		return
 	}
-
+	
 	cookie := http.Cookie{
 		Name:     "_cookie",
 		Value:    session.Uuid,

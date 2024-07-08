@@ -261,12 +261,12 @@ var webRoutes = WebRoutes{
 		"like",
 		"POST",
 		"/like",
-		handlers.Like,
+		handlers.LikeHandler,
 	},
 	{
 		"dislike",
 		"POST",
 		"/dislike",
-		handlers.Dislike,
+		handlers.DislikeHandler,
 	},
 }

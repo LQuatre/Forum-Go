@@ -123,3 +123,52 @@ ERROR 2024/07/06 04:09:19 helper.go:69: sql: no rows in result set Cannot get ti
 ERROR 2024/07/06 04:09:19 helper.go:69: no such table: messages Cannot get replies
 ERROR 2024/07/06 04:09:20 helper.go:69: sql: no rows in result set Cannot get ticket
 ERROR 2024/07/06 04:09:20 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:04:40 helper.go:69: sql: no rows in result set Cannot find email
+ERROR 2024/07/08 14:11:42 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:11:42 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:26 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:26 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:28 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:28 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:28 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:28 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:28 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:28 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:29 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:29 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:29 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:29 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:32 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:32 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:32 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:32 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:33 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:33 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:34 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:34 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:35 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:35 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:13:47 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:13:47 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:15:23 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:15:23 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:15:25 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:15:25 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:15:25 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:15:25 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:15:26 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:15:26 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:15:27 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:15:27 helper.go:69: no such table: messages Cannot get replies
+ERROR 2024/07/08 14:15:39 helper.go:69: Email already used Cannot create user
+SUCCESS 2024/07/08 14:15:39 helper.go:59: User created:  Lucas Christophe DIOT
+ERROR 2024/07/08 14:18:50 helper.go:69: sql: no rows in result set Cannot get user from session
+ERROR 2024/07/08 14:19:01 helper.go:69: sql: no rows in result set Cannot get user from session
+ERROR 2024/07/08 14:19:01 helper.go:69: sql: no rows in result set Cannot get user from session
+ERROR 2024/07/08 14:19:06 helper.go:69: sql: no rows in result set Cannot get user from session
+ERROR 2024/07/08 14:19:07 helper.go:69: sql: no rows in result set Cannot get user from session
+WARNING 2024/07/08 14:29:33 helper.go:74: <nil> Failed to get cookie
+SUCCESS 2024/07/08 14:32:30 helper.go:59: User created:  LQuatre
+SUCCESS 2024/07/08 14:32:32 helper.go:59: Authenticated user:  unmecpasfort@gmail.com
+ERROR 2024/07/08 14:34:06 helper.go:69: sql: no rows in result set Cannot get ticket
+ERROR 2024/07/08 14:34:06 helper.go:69: no such table: messages Cannot get replies
