@@ -2,8 +2,6 @@
 A simple forum web application using Go and SQLite.
 
 ```bash
-#!/bin/bash
-
 ## Description
 
 Ce projet est un forum web permettant aux utilisateurs de poster des threads, de commenter sur ces threads et de créer des comptes utilisateurs.
@@ -61,6 +59,13 @@ Ce projet a été réalisé par un groupe de quatre développeurs :
    ```bash
    go run /cmd/jilt/main.go
    ```
+
+## Instructions pour Docker
+
+### Prérequis
+
+- Docker
+- Docker Compose
 
 ## Remarques
 
