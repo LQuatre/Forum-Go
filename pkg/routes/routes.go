@@ -245,4 +245,16 @@ var webRoutes = WebRoutes{
 		"/chat",
 		handlers.Chat,
 	},
+	{
+		"like",
+		"POST",
+		"/like",
+		handlers.Like,
+	},
+	{
+		"dislike",
+		"POST",
+		"/dislike",
+		handlers.Dislike,
+	},
 }
