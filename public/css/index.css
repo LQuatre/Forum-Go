@@ -51,7 +51,6 @@ body {
   fill: #4a4a4a;
 }
 
-
 /*--------------------
 Mixins
 --------------------*/
@@ -84,7 +83,8 @@ body {
   top: 0;
   left: 0;
   z-index: 1;
-  background: url("https://images.unsplash.com/photo-1451186859696-371d9477be93?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925") no-repeat 0 0;
+  background: url("https://images.unsplash.com/photo-1451186859696-371d9477be93?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925")
+    no-repeat 0 0;
   filter: blur(80px);
   transform: scale(1.2);
 }
@@ -94,9 +94,9 @@ Chat
 --------------------*/
 .chat {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+  right: 0;
+  transform: translate(-10%, -10%);
   width: 300px;
   height: 80vh;
   max-height: 500px;
@@ -105,7 +105,7 @@ Chat
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
-  display: flex;
+  display: none;
   justify-content: space-between;
   flex-direction: column;
 }
@@ -151,6 +151,23 @@ Chat Title
 .chat-title .avatar img {
   width: 100%;
   height: auto;
+}
+
+.chat-title .close {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 10px;
+  color: #fff;
+  border: none;
+  background: #8a2424;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 10px;
+  outline: none !important;
+  transition: background 0.2s ease;
 }
 
 /*--------------------
@@ -236,7 +253,7 @@ Messages
   transform: scale(0);
   transform-origin: 0 0;
   -webkit-animation: bounce 500ms linear both;
-          animation: bounce 500ms linear both;
+  animation: bounce 500ms linear both;
 }
 .messages .message.loading::before {
   position: absolute;
@@ -252,10 +269,10 @@ Messages
   z-index: 2;
   margin-top: 4px;
   -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
   border: none;
   -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
+  animation-delay: 0.15s;
 }
 .messages .message.loading span {
   display: block;
@@ -278,7 +295,7 @@ Messages
   z-index: 2;
   margin-top: 4px;
   -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
   margin-left: -7px;
 }
 .messages .message.loading span::after {
@@ -295,10 +312,10 @@ Messages
   z-index: 2;
   margin-top: 4px;
   -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
   margin-left: 7px;
   -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 
 /*--------------------
@@ -342,6 +359,7 @@ Message Box
   outline: none !important;
   transition: background 0.2s ease;
 }
+
 .message-box .message-submit:hover {
   background: #1d7745;
 }
@@ -463,4 +481,56 @@ Bounce
   to {
     transform: translateY(-10px);
   }
+}
+
+.chatBtn {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background-color: #d1d0ca;
+  background-image: linear-gradient(
+    147deg,
+    rgb(47, 160, 85),
+    #c1e2d3,
+    #333d36
+  );
+  cursor: pointer;
+  padding-top: 3px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.164);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-size: 300%;
+  background-position: left;
+  transition-duration: 1s;
+}
+
+.tooltip {
+  position: absolute;
+  top: -40px;
+  opacity: 0;
+  background-color: rgb(141, 141, 137);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.5s;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+
+.chatBtn:hover .tooltip {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+.chatBtn:hover {
+  background-position: right;
+  transition-duration: 1s;
 }

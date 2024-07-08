@@ -10,6 +10,8 @@
       <h3>{{ .Author.Name }}</h3>
       <p>{{ .Body }}</p>
       <p>{{ .CreatedAt }}</p>
+      <button onclick="likeComment('{{ .Uuid }}')">Like</button>
+      <button onclick="dislikeComment('{{ .Uuid }}')">Dislike</button>
     </div>
     {{ end }}
 
@@ -25,5 +27,15 @@
     </form>
   </div>
 </div>
+
+<script>
+  function likeComment(commentUuid) {
+    console.log("Liked comment with UUID: " + commentUuid);
+  }
+
+  function dislikeComment(commentUuid) {
+    console.log("Disliked comment with UUID: " + commentUuid);
+  }
+</script>
 
 {{ end }}
