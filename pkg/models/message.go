@@ -3,11 +3,11 @@ package models
 import "time"
 
 type MessageTicket struct {
-	Uuid      string
-	Body      string
-	UserUuId  string
+	Uuid       string
+	Body       string
+	UserUuId   string
 	TicketUuId string
-	CreatedAt time.Time
+	CreatedAt  time.Time
 }
 
 func Messages() (messages []MessageTicket, err error) {
@@ -42,11 +42,11 @@ func CreateMessage(body string, userUuId string, ticketUuId string) (message Mes
 	}
 
 	message = MessageTicket{
-		Uuid:         uuid,
-		Body:         body,
-		UserUuId:     userUuId,
-		TicketUuId:   ticketUuId,
-		CreatedAt:    time.Now(),
+		Uuid:       uuid,
+		Body:       body,
+		UserUuId:   userUuId,
+		TicketUuId: ticketUuId,
+		CreatedAt:  time.Now(),
 	}
 	return
 }
@@ -81,5 +81,21 @@ func (message *MessageTicket) User() (user User, err error) {
 	user = User{}
 	err = Db.QueryRow("SELECT uuid, name, email, created_at, isAdmin FROM users WHERE uuid = ?", message.UserUuId).
 		Scan(&user.Uuid, &user.Name, &user.Email, &user.CreatedAt, &user.IsAdmin)
+	return
+}
+
+func MessageTicketsByTicketUUID(ticketUuId string) (messages []MessageTicket, err error) {
+	rows, err := Db.Query("SELECT uuid, body, user_uuid, ticket_uuid, created_at FROM messages WHERE ticket_uuid = ?", ticketUuId)
+	if err != nil {
+		return
+	}
+	for rows.Next() {
+		message := MessageTicket{}
+		if err = rows.Scan(&message.Uuid, &message.Body, &message.UserUuId, &message.TicketUuId, &message.CreatedAt); err != nil {
+			return
+		}
+		messages = append(messages, message)
+	}
+	rows.Close()
 	return
 }

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"jilt.com/m/pkg/models"
@@ -101,4 +102,54 @@ func AdminCloseASession(writer http.ResponseWriter, request *http.Request) {
 	}
 	success("Session deleted", "Session deleted successfully")
 	http.Redirect(writer, request, "/admin", 302)
+}
+
+type AdminHelp struct {
+	Tickets     *[]models.Ticket
+	Ticket      *models.Ticket
+	Replies     *[]models.MessageTicket
+	DefinedName string
+	DefinedUUID string
+}
+
+func AdminHelps(writer http.ResponseWriter, request *http.Request) {
+	session, err := session(writer, request)
+	if err != nil {
+		http.Redirect(writer, request, "/login", 302)
+	} else {
+		user, err := session.User()
+		if err != nil {
+			danger(err, "Cannot get user from session")
+		}
+		if user.IsAdmin != true {
+			http.Redirect(writer, request, "/", 302)
+		}
+		tickets, err := models.Tickets()
+		if err != nil {
+			danger(err, "Cannot get helps")
+		}
+		adminHelps := AdminHelp{
+			Tickets:     &tickets,
+			Ticket:      nil,
+			Replies:     nil,
+			DefinedName: "",
+			DefinedUUID: "",
+		}
+		if request.URL.Query().Get("uuid") != "" {
+			ticket, err := models.TicketByUUID(request.URL.Query().Get("uuid"))
+			if err != nil {
+				danger(err, "Cannot get ticket")
+			}
+			adminHelps.Ticket = &ticket
+			replies, err := models.MessageTicketsByTicketUUID(ticket.Uuid)
+			if err != nil {
+				danger(err, "Cannot get replies")
+			}
+			adminHelps.Replies = &replies
+			adminHelps.DefinedName = ticket.Name
+			adminHelps.DefinedUUID = ticket.UserUuId
+			fmt.Println(adminHelps.DefinedUUID)
+		}
+		generateHTML(writer, &adminHelps, "layout", "admin.navbar", "chat")
+	}
 }

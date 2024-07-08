@@ -27,7 +27,15 @@ func Index(writer http.ResponseWriter, request *http.Request) {
 	} else {
 		sess, err := session(writer, request)
 		if err != nil {
-			generateHTML(writer, &categories, "layout", "navbar", "index")
+			user := models.User{
+				Name:  "Guest",
+				Email: "",
+			}
+			indexData := IndexData{
+				Categories: categories,
+				User:       user,
+			}
+			generateHTML(writer, &indexData, "layout", "navbar", "index")
 		} else {
 			user, err := sess.User()
 			indexData := IndexData{
@@ -38,9 +46,9 @@ func Index(writer http.ResponseWriter, request *http.Request) {
 				danger(err, "Cannot get user from session")
 			}
 			if user.IsAdmin {
-				generateHTML(writer, &categories, "layout", "admin.navbar", "index")
+				generateHTML(writer, &indexData, "layout", "admin.navbar", "index")
 			} else {
-				generateHTML(writer, &categories, "layout", "auth.navbar", "index")
+				generateHTML(writer, &indexData, "layout", "auth.navbar", "index")
 			}
 		}
 	}

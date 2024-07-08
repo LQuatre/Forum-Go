@@ -61,15 +61,20 @@ CREATE TABLE IF NOT EXISTS "tickets" (
 	"uuid"	VARCHAR(50) DEFAULT NULL,
 	"name"	VARCHAR(50) DEFAULT NULL,
 	"desc"	VARCHAR(50) DEFAULT NULL,
-	"user_uuid"	INTEGER,
+	"user_uuid"	VARCHAR(255) NOT NULL,
 	"created_at"	DATE
+	FOREIGN KEY("user_uuid") REFERENCES "users"("uuid"),
+	PRIMARY KEY("uuid")
 );
 CREATE TABLE IF NOT EXISTS "tikets-messages" (
 	"uuid"	VARCHAR(50) DEFAULT NULL,
 	"messages"	VARCHAR(50) DEFAULT NULL,
-	"user_uuid"	INTEGER,
-	"ticket_uuid"	INTEGER,
+	"user_uuid"	VARCHAR(255) NOT NULL,
+	"ticket_uuid"	VARCHAR(255) NOT NULL,
 	"created_at"	DATE
+	FOREIGN KEY("user_uuid") REFERENCES "users"("uuid"),
+	FOREIGN KEY("ticket_uuid") REFERENCES "tickets"("uuid"),
+	PRIMARY KEY("uuid")
 );
 INSERT INTO "users" VALUES ('39a96046-d88f-43a2-771a-ff75631455de','isma','ismailbenlaidi@gmail.com','$2a$10$Tmi8cc6s8yxPYpstM0/RRe9Cp7K3CtmV1AeGl3eb4nfToqqFE4uFK','2024-07-05 14:38:03.8988075+02:00',0,'455182152586362901','','','');
 INSERT INTO "users" VALUES ('09dbb778-c4b4-4042-4b07-4d1a8601d998','AcryX','tlaucournet@gmail.com','$2a$10$z2jp5lYXYncA74H12/kLSuRTkW2C0VH8ReHPa8cchBmSIefR7e.46','2024-07-05 14:38:13.6846194+02:00',0,'235120346112458752','','','');
