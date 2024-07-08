@@ -4,17 +4,17 @@ A simple forum web application using Go and SQLite.
 ```bash
 #!/bin/bash
 
-# README.md
-
-# Projet Web Forum
-
 ## Description
 
-Ce projet est un forum web permettant aux utilisateurs de poster des threads, de commenter sur ces threads et de créer des comptes utilisateurs. Il est développé en utilisant HTML, CSS, JavaScript et Go. Une base de données SQL est utilisée pour stocker les informations relatives aux utilisateurs, threads, et commentaires.
+Ce projet est un forum web permettant aux utilisateurs de poster des threads, de commenter sur ces threads et de créer des comptes utilisateurs.
+Il est développé en utilisant HTML, CSS, JavaScript et Go.
+Une base de données SQL est utilisée pour stocker les informations relatives aux utilisateurs, threads, et commentaires.
 
 ## État du projet
 
-Le projet est encore en cours de développement. Bien que les fonctionnalités de base telles que la publication de threads et de commentaires soient opérationnelles, certaines fonctionnalités sont encore en cours de développement ou d'amélioration.
+Le projet est encore en cours de développement.
+Bien que les fonctionnalités de base telles que la publication de threads et de commentaires soient opérationnelles,
+certaines fonctionnalités sont encore en cours de développement ou d'amélioration.
 
 ## Fonctionnalités
 
